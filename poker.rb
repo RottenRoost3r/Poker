@@ -31,3 +31,8 @@ class Card
     attr_reader :card_name
     attr_reader :card_shape
 end
+
+class Hand
+    def initialize()
+    end
+end

@@ -42,4 +42,9 @@ class Poker < Minitest::Test
         x = Card.new("A", "H")
         assert_equal("14", x.card_value)
     end
+
+    def test_that_hand_is_class
+        x = Hand.new
+        assert_equal(Hand, x.class)
+    end
 end
