@@ -33,4 +33,9 @@ class Poker < Minitest::Test
         x = Card.new("K", "H")
         assert_equal("13", x.card_value)
     end
+
+    def test_that_ace_card_registers
+        x = Card.new("A", "H")
+        assert_equal("14", x.card_value)
+    end
 end
