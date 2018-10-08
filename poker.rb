@@ -23,6 +23,8 @@ class Card
             @card_shape = "Spades"
         when "C"
             @card_shape = "Clubs"
+        when "D"
+            @card_shape = "Diamonds"
         end
     end
     attr_reader :card_value
