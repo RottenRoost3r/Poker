@@ -7,6 +7,8 @@ class Card
             @card_value = "10"
         when "J"
             @card_value = "11"
+        when "Q"
+            @card_value = "12"
         end
     end
     attr_reader :card_value
