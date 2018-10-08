@@ -10,5 +10,6 @@ class Poker < Minitest::Test
     def test_that_card_is_class
         x = Card.new(4,"H")
         assert_equal(Card, x.class)
+        assert_equal(4, x.card_value)
     end
 end
