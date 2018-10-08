@@ -11,6 +11,8 @@ class Card
             @card_value = "12"
         when "K"
             @card_value = "13"
+        when "A"
+            @card_value = "14"
         end
     end
     attr_reader :card_value
