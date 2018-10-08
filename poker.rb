@@ -5,6 +5,8 @@ class Card
         case number
         when "T"
             @card_value = "10"
+        when "J"
+            @card_value = "11"
         end
     end
     attr_reader :card_value
