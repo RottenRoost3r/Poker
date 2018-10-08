@@ -18,6 +18,7 @@ class Poker < Minitest::Test
     def test_that_ten_card_registers
         x = Card.new("T", "S")
         assert_equal("10", x.card_value)
+        assert_equal("Spades", x.card_shape)
     end
 
     def test_that_jack_card_registers
