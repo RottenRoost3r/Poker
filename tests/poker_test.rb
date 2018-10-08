@@ -12,6 +12,7 @@ class Poker < Minitest::Test
         assert_equal(Card, x.class)
         assert_equal("4", x.card_value)
         assert_equal("4H", x.card_name)
+        assert_equal("Hearts", x.card_shape)
     end
 
     def test_that_ten_card_registers
@@ -25,7 +26,7 @@ class Poker < Minitest::Test
     end
 
     def test_that_queen_card_registers
-        x = Card.new("Q", "H")
+        x = Card.new("Q", "D")
         assert_equal("12", x.card_value)
     end
 
