@@ -47,4 +47,9 @@ class Poker < Minitest::Test
         x = Hand.new
         assert_equal(Hand, x.class)
     end
+
+    def test_that_hand_is_array
+        y = Hand.new
+        assert_equal(Array, y.hand.class)
+    end
 end

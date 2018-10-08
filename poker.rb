@@ -34,5 +34,11 @@ end
 
 class Hand
     def initialize()
+        @hand = []
     end
+
+    def deal(card)
+        @hand << card
+    end
+    attr_reader :hand
 end
