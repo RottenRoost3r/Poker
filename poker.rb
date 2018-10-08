@@ -5,4 +5,5 @@ class Card
 
     end
     attr_reader :card_value
+    attr_reader :card_name
 end
