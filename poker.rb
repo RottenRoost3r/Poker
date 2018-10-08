@@ -19,6 +19,8 @@ class Card
         case suit
         when "H"
             @card_shape = "Hearts"
+        when "S"
+            @card_shape = "Spades"
         end
     end
     attr_reader :card_value
