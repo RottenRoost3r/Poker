@@ -64,5 +64,6 @@ class Poker < Minitest::Test
         d = Deck.new
         assert_equal(Card, d.deck[0].class)
         assert_equal("2H", d.deck[0].card_name)
+        assert_equal("Clubs", d.deck[26].card_shape)
     end
 end
