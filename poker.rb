@@ -46,8 +46,8 @@ end
 class Deck
     def initialize()
         @deck = []
-        @value = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
-        @suit = ['H', 'S', 'C', 'D']
+        value = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
+        suit = ['H', 'S', 'C', 'D']
         suit.each do |shape|
             value.each do |val|
                 @deck << Card.new(val, shape)
@@ -55,5 +55,5 @@ class Deck
             @deck
         end
     end
-
+    attr_reader :deck
 end

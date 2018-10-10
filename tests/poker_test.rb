@@ -59,4 +59,9 @@ class Poker < Minitest::Test
         x.deal(y)
         assert_equal(Card, x.hand[0].class)
     end
+
+    def test_that_stuff_is_in_deck
+        d = Deck.new
+        assert_equal(Card, d.deck[0].class)
+    end
 end
