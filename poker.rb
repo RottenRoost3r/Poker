@@ -60,7 +60,13 @@ class Deck
         @deck.shuffle!
     end
 
-
+    def deal_hand()
+        y = Hand.new
+        5.times do
+            y.deal(@deck.pop())
+        end
+        return y
+    end
 
     attr_reader :deck
 end
