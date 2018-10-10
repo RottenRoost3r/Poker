@@ -69,4 +69,10 @@ class Poker < Minitest::Test
         assert_equal("10", d.deck[8].card_value)
         assert_equal(52, d.deck.length)
     end
+
+    def test_that_deck_shuffles
+        d = Deck.new
+        f = d.shuffle_deck()
+        refute_equal(f, d)
+    end
 end
