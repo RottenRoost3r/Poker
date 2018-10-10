@@ -42,3 +42,8 @@ class Hand
     end
     attr_reader :hand
 end
+
+class Deck
+    def initialize()
+    end
+end
