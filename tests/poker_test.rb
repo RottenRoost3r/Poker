@@ -63,5 +63,6 @@ class Poker < Minitest::Test
     def test_that_stuff_is_in_deck
         d = Deck.new
         assert_equal(Card, d.deck[0].class)
+        assert_equal("2H", d.deck[0].card_name)
     end
 end
