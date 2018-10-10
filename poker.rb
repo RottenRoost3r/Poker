@@ -45,5 +45,15 @@ end
 
 class Deck
     def initialize()
+        @deck = []
+        @value = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
+        @suit = ['H', 'S', 'C', 'D']
+        suit.each do |shape|
+            value.each do |val|
+                @deck << Card.new(val, shape)
+            end
+            @deck
+        end
     end
+
 end
