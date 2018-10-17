@@ -85,6 +85,6 @@ class Poker < Minitest::Test
 
     def test_that_arrays_incriment
         x = Rules.new
-        assert_equal(true, x.array_increments([2, 3, 4]))
+        assert_equal(true, x.array_increments(1, [2, 3, 4]))
     end
 end

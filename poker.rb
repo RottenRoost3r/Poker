@@ -75,7 +75,15 @@ class Rules
     def initialize()
     end
 
-    def array_increments(array)
-
+    def array_increments(step, array)
+        sorted = array.sort
+        lastNum = array[0]
+        sorted[1, sorted.count].each do |v|
+            if lastNum + step != v
+                return false
+            end
+            lastNum = v
+        end
+        true
     end
 end
