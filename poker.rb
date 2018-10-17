@@ -86,4 +86,7 @@ class Rules
         end
         true
     end
+
+    def straight_flush(hand)
+    end
 end

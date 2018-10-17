@@ -89,4 +89,15 @@ class Poker < Minitest::Test
         assert_equal(false, x.array_increments(1, [2, 2, 2, 2]))
         assert_equal(true, x.array_increments(1, [5, 6, 7, 8, 9, 10]))
     end
+
+    def test_straight_flush
+        temp = Hand.new
+        temp.deal(Card.new("2", "C"))
+        temp.deal(Card.new("3", "C"))
+        temp.deal(Card.new("4", "C"))
+        temp.deal(Card.new("5", "C"))
+        temp.deal(Card.new("6", "C"))
+        game = Rules.new
+        assert_equal(true, game.straight_flush(temp))
+    end
 end
