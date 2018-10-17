@@ -70,3 +70,12 @@ class Deck
 
     attr_reader :deck
 end
+
+class Rules
+    def initialize()
+    end
+
+    def array_increments(array)
+
+    end
+end

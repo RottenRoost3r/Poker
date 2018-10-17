@@ -82,4 +82,9 @@ class Poker < Minitest::Test
         n = z.deal_hand()
         assert_equal(5, n.hand.length)
     end
+
+    def test_that_arrays_incriment
+        x = Rules.new
+        assert_equal(true, x.array_increments([2, 3, 4]))
+    end
 end
