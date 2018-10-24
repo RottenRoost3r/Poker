@@ -88,5 +88,15 @@ class Rules
     end
 
     def straight_flush(hand)
+        temp_suit = []
+        temp_num = []
+        hand.hand.each do |val|
+            temp_suit << val.card_shape
+            temp_num << val.card_value.to_i
+        end
+        if temp_suit.all? {|val| val == temp_suit[0] && array_increments(1, temp_num)}
+            return true
+        end
+        false
     end
 end
