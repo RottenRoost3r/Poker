@@ -101,5 +101,23 @@ class Rules
     end
 
     def four_of_a_kind(hand)
+        temp_num = []
+        hand.hand.each do |val|
+            temp_num << val.card_value.to_i
+        end
+        temp_num.each do |val|
+            counter = 0
+            temp_num.each do |val2|
+                if val == val2
+                    counter += 1
+                end
+            end
+        if counter == 4
+            return true
+        else
+            break
+        end
+    end
+        false    
     end
 end
