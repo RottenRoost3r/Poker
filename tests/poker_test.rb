@@ -100,4 +100,15 @@ class Poker < Minitest::Test
         game = Rules.new
         assert_equal(true, game.straight_flush(temp))
     end
+
+    def test_straight_flush
+        temp = Hand.new
+        temp.deal(Card.new("3", "H"))
+        temp.deal(Card.new("3", "D"))
+        temp.deal(Card.new("2", "H"))
+        temp.deal(Card.new("5", "S"))
+        temp.deal(Card.new("9", "H"))
+        game = Rules.new
+        assert_equal(false, game.straight_flush(temp))
+    end
 end
