@@ -72,7 +72,20 @@ class Deck
 end
 
 class Rules
+    attr_accessor :temp_num
+    attr_accessor :temp_suit
     def initialize()
+        @temp_suit = []
+        @temp_num = []
+    end
+
+    def prepare_cards(hand)
+        @temp_suit = []
+        @temp_num = []
+        hand.hand.each do |val|
+            temp_suit << val.card_shape
+            temp_num << val.card_value.to_i
+        end
     end
 
     def array_increments(step, array)
@@ -88,12 +101,7 @@ class Rules
     end
 
     def straight_flush(hand)
-        temp_suit = []
-        temp_num = []
-        hand.hand.each do |val|
-            temp_suit << val.card_shape
-            temp_num << val.card_value.to_i
-        end
+        prepare_cards(hand)
         if temp_suit.all? {|val| val == temp_suit[0] && array_increments(1, temp_num)}
             return true
         end
@@ -101,10 +109,7 @@ class Rules
     end
 
     def four_of_a_kind(hand)
-        temp_num = []
-        hand.hand.each do |val|
-            temp_num << val.card_value.to_i
-        end
+        prepare_cards(hand)
         temp_num.each do |val|
             counter = 0
             temp_num.each do |val2|
@@ -122,5 +127,22 @@ class Rules
     end
 
     def full_house(hand)
+        prepare_cards(hand)
+        temp_num.each do |val|
+            counter = 0
+            temp_num.each do |val2|
+                if val == val2
+                    counter += 1
+                end
+            end
+            if counter == 3
+            end
+        end
     end
+
+
+
+
+
+
 end
