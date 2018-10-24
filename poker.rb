@@ -113,7 +113,7 @@ class Rules
         temp_num.each do |val|
             counter = 0
             temp_num.each do |val2|
-                if val == val2
+                if val == val2 
                     counter += 1
                 end
             end
@@ -136,8 +136,15 @@ class Rules
                 end
             end
             if counter == 3
+                temp_num.delete(val)
+                if temp_num[0] == temp_num[1]
+                    return true
+                else 
+                    break
+                end
             end
         end
+        false
     end
 
 
