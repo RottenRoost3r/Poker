@@ -90,7 +90,7 @@ class Poker < Minitest::Test
         assert_equal(true, x.array_increments(1, [5, 6, 7, 8, 9, 10]))
     end
 
-    def test_straight_flush
+    def test_straight_flush_is
         temp = Hand.new
         temp.deal(Card.new("2", "C"))
         temp.deal(Card.new("3", "C"))
@@ -101,7 +101,7 @@ class Poker < Minitest::Test
         assert_equal(true, game.straight_flush(temp))
     end
 
-    def test_straight_flush
+    def test_straight_flush_isnt
         temp = Hand.new
         temp.deal(Card.new("3", "H"))
         temp.deal(Card.new("3", "D"))
@@ -110,5 +110,16 @@ class Poker < Minitest::Test
         temp.deal(Card.new("9", "H"))
         game = Rules.new
         assert_equal(false, game.straight_flush(temp))
+    end
+
+    def test_4_of_a_kind
+        temp = Hand.new
+        temp.deal(Card.new("2", "H"))
+        temp.deal(Card.new("2", "S"))
+        temp.deal(Card.new("2", "C"))
+        temp.deal(Card.new("2", "D"))
+        temp.deal(Card.new("4", "H"))
+        game = Rules.new
+        assert_equal(true, game.four_of_a_kind(temp))
     end
 end

@@ -99,4 +99,7 @@ class Rules
         end
         false
     end
+
+    def four_of_a_kind(hand)
+    end
 end
