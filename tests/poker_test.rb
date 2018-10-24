@@ -112,7 +112,7 @@ class Poker < Minitest::Test
         assert_equal(false, game.straight_flush(temp))
     end
 
-    def test_4_of_a_kind
+    def test_4_of_a_kind_is
         temp = Hand.new
         temp.deal(Card.new("2", "H"))
         temp.deal(Card.new("2", "S"))
@@ -121,5 +121,16 @@ class Poker < Minitest::Test
         temp.deal(Card.new("4", "H"))
         game = Rules.new
         assert_equal(true, game.four_of_a_kind(temp))
+    end
+
+    def test_4_of_a_kind_isnt
+        temp = Hand.new
+        temp.deal(Card.new("2", "H"))
+        temp.deal(Card.new("3", "S"))
+        temp.deal(Card.new("8", "C"))
+        temp.deal(Card.new("2", "D"))
+        temp.deal(Card.new("4", "H"))
+        game = Rules.new
+        assert_equal(false, game.four_of_a_kind(temp))
     end
 end
