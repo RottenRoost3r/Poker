@@ -220,6 +220,5 @@ class Poker < Minitest::Test
         temp.deal(Card.new("2", "D"))
         game = Rules.new
         assert_equal(false, game.three_of_a_kind(temp))
-    end
-        
+    end    
 end

@@ -74,12 +74,13 @@ end
 class Rules
     attr_reader :temp_num
     attr_reader :temp_suit
+    attr_reader :counter
     def initialize()
         @temp_suit = []
         @temp_num = []
     end
 
-    def prepare_cards(hand)
+    def prepare_cards(hand) #splits the hand into 2 arrays, one for suit and the other for value
         @temp_suit = []
         @temp_num = []
         hand.hand.each do |val|
@@ -88,7 +89,25 @@ class Rules
         end
     end
 
-    def array_increments(step, array)
+    def dux_loop(array, num) #does a double loop on suit or value to tell how many are the same
+        array.each do |val|
+            counter = 0
+            array.each do |val2|
+                if val == val2
+                    counter += 1
+                end
+            end
+            if counter == num
+                return true
+            else
+                break
+            end
+        end
+        false 
+    end
+
+
+    def array_increments(step, array) #checks to see if values are incrementing (example = 1,2,3,4,5)
         sorted = array.sort
         lastNum = array[0]
         sorted[1, sorted.count].each do |v|
@@ -110,20 +129,7 @@ class Rules
 
     def four_of_a_kind(hand)
         prepare_cards(hand)
-        temp_num.each do |val|
-            counter = 0
-            temp_num.each do |val2|
-                if val == val2 
-                    counter += 1
-                end
-            end
-        if counter == 4
-            return true
-        else
-            break
-        end
-    end
-        false    
+        dux_loop(temp_num, 4) 
     end
 
     def full_house(hand)
@@ -149,20 +155,7 @@ class Rules
 
     def flush(hand)
         prepare_cards(hand)
-        temp_suit.each do |val|
-            counter = 0
-            temp_suit.each do |val2|
-                if val == val2
-                    counter += 1
-                end
-            end
-            if counter == 5
-                return true
-            else
-                break
-            end
-        end
-        false
+        dux_loop(temp_suit, 5)
     end
 
     def straight(hand)
@@ -176,22 +169,6 @@ class Rules
 
     def three_of_a_kind(hand)
         prepare_cards(hand)
-        temp_num.each do |val|
-            counter = 0
-            temp_num.each do |val2|
-                if val == val2
-                    counter += 1
-                end
-            end
-            if counter == 3
-                return true
-            else
-                break
-            end
-        end
-        false
+        dux_loop(temp_num, 3)
     end
-
-
-
 end
