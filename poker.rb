@@ -75,6 +75,7 @@ class Rules
     attr_reader :temp_num
     attr_reader :temp_suit
     attr_reader :counter
+    attr_reader :array1
     def initialize()
         @temp_suit = []
         @temp_num = []
@@ -106,6 +107,25 @@ class Rules
         false 
     end
 
+    def pairing(hand, num)
+        array1 = []
+        temp_num.each do |val|
+            counter = 0
+            temp_num.each do |val2|
+                if val == val2
+                    counter +=1
+                end
+            end
+            if counter == num
+                array1 << val
+                temp_num.delete(val)
+            end
+            if array1.length == 2
+                return true
+            end
+        end
+        false
+    end
 
     def array_increments(step, array) #checks to see if values are incrementing (example = 1,2,3,4,5)
         sorted = array.sort
@@ -169,26 +189,12 @@ class Rules
     end
 
     def two_pair(hand)
-        prepare_cards(hand)
-        array1 = []
-        temp_num.each do |val|
-            counter = 0
-            temp_num.each do |val2|
-                if val == val2
-                    counter +=1
-                end
-            end
-            if counter == 2
-                array1 << val
-                temp_num.delete(val)
-            end
-            if array1.length == 2
-                return true
-            end
-        end
-        false
+        prepared = prepare_cards(hand)
+        pairing(prepared, 2)
     end
 
     def pair(hand)
+        prepared = prepare_cards(hand)
+        pairing(prepared, 1)
     end
 end
