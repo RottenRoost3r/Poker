@@ -179,6 +179,14 @@ class Poker < Minitest::Test
     end
 
     def test_straight_is
+        temp = Hand.new
+        temp.deal(Card.new("3", "H"))
+        temp.deal(Card.new("4", "H"))
+        temp.deal(Card.new("5", "D"))
+        temp.deal(Card.new("6", "C"))
+        temp.deal(Card.new("7", "S"))
+        game = Rules.new
+        assert_equal(true, game.straight(temp))
     end
 
 
