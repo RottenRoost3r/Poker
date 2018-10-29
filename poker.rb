@@ -101,31 +101,9 @@ class Rules
             end
             if counter == num
                 return true
-            else
-                break
             end
         end
         false 
-    end
-
-    def pairing(hand, num) #function to decide how many pairs, makes the pair functions alot shorter
-        array1 = []
-        temp_num.each do |val|
-            counter = 0
-            temp_num.each do |val2|
-                if val == val2
-                    counter +=1
-                end
-            end
-            if counter == num
-                array1 << val
-                temp_num.delete(val)
-            end
-            if array1.length == num
-                return true
-            end
-        end
-        false
     end
 
     def array_increments(step, array) #checks to see if values are incrementing (example = 1,2,3,4,5)
@@ -201,6 +179,18 @@ class Rules
     end
 
     def pair(hand)
-   
+        prepare_cards(hand)
+        temp_num.each do |val|
+            counter = 0
+            temp_num.each do |val2|
+                if val == val2
+                    counter += 1
+                end
+            end
+            if counter == 2
+                return true
+            end
+        end
+        false 
     end
 end
