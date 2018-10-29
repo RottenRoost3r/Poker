@@ -76,6 +76,7 @@ class Rules
     attr_reader :temp_suit
     attr_reader :counter
     attr_reader :array1
+    attr_reader :val
     def initialize()
         @temp_suit = []
         @temp_num = []
@@ -107,7 +108,7 @@ class Rules
         false 
     end
 
-    def pairing(hand, num)
+    def pairing(hand, num) #function to decide how many pairs, makes the pair functions alot shorter
         array1 = []
         temp_num.each do |val|
             counter = 0
@@ -154,20 +155,10 @@ class Rules
 
     def full_house(hand)
         prepare_cards(hand)
-        temp_num.each do |val|
-            counter = 0
-            temp_num.each do |val2|
-                if val == val2
-                    counter += 1
-                end
-            end
-            if counter == 3
-                temp_num.delete(val)
-                if temp_num[0] == temp_num[1]
-                    return true
-                else 
-                    break
-                end
+        if dux_loop(temp_num, 3) == true
+            temp_num.delete(val)
+            if temp_num[0] == temp_num[1]
+                return true
             end
         end
         false
