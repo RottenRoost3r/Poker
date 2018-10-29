@@ -121,7 +121,7 @@ class Rules
                 array1 << val
                 temp_num.delete(val)
             end
-            if array1.length == 2
+            if array1.length == num
                 return true
             end
         end
@@ -180,12 +180,27 @@ class Rules
     end
 
     def two_pair(hand)
-        prepared = prepare_cards(hand)
-        pairing(prepared, 2)
+        prepare_cards(hand)
+        array1 = []
+        temp_num.each do |val|
+            counter = 0
+            temp_num.each do |val2|
+                if val == val2
+                    counter +=1
+                end
+            end
+            if counter == 2
+                array1 << val
+                temp_num.delete(val)
+            end
+            if array1.length == 2
+                return true
+            end
+        end
+        false
     end
 
     def pair(hand)
-        prepared = prepare_cards(hand)
-        pairing(prepared, 1)
+   
     end
 end
