@@ -165,6 +165,10 @@ class Rules
         false
     end
 
+    def straight(hand)
+        
+    end
+
 
 
 end
