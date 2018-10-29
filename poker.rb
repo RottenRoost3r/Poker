@@ -166,7 +166,12 @@ class Rules
     end
 
     def straight(hand)
-        
+        prepare_cards(hand)
+        if array_increments(1, temp_num) == true
+            return true
+        else
+            false
+        end
     end
 
 
