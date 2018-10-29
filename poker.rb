@@ -174,6 +174,9 @@ class Rules
         end
     end
 
+    def three_of_a_kind(hand)
+    end
+
 
 
 end
