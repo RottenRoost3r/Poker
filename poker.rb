@@ -75,7 +75,6 @@ class Rules
     attr_reader :temp_num
     attr_reader :temp_suit
     attr_reader :counter
-    attr_reader :array1
     attr_reader :val
     def initialize()
         @temp_suit = []
