@@ -147,6 +147,9 @@ class Rules
         false
     end
 
+    def flush(hand)
+    end
+
 
 
 end
