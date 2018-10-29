@@ -193,4 +193,7 @@ class Rules
         end
         false 
     end
+
+    def high_card(hand)
+    end
 end
