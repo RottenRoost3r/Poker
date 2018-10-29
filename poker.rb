@@ -195,5 +195,7 @@ class Rules
     end
 
     def high_card(hand)
+        prepare_cards(hand)
+        return temp_num.sort().last
     end
 end
