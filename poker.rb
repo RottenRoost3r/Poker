@@ -148,6 +148,21 @@ class Rules
     end
 
     def flush(hand)
+        prepare_cards(hand)
+        temp_suit.each do |val|
+            counter = 0
+            temp_suit.each do |val2|
+                if val == val2
+                    counter += 1
+                end
+            end
+            if counter == 5
+                return true
+            else
+                break
+            end
+        end
+        false
     end
 
 
