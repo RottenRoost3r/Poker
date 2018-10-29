@@ -211,5 +211,15 @@ class Poker < Minitest::Test
         assert_equal(true, game.three_of_a_kind(temp))
     end
 
+    def test_3_of_a_kind_isnt
+        temp = Hand.new
+        temp.deal(Card.new("2", "H"))
+        temp.deal(Card.new("3", "C"))
+        temp.deal(Card.new("8", "H"))
+        temp.deal(Card.new("8", "H"))
+        temp.deal(Card.new("2", "D"))
+        game = Rules.new
+        assert_equal(false, game.three_of_a_kind(temp))
+    end
         
 end
