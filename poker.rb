@@ -72,8 +72,8 @@ class Deck
 end
 
 class Rules
-    attr_accessor :temp_num
-    attr_accessor :temp_suit
+    attr_reader :temp_num
+    attr_reader :temp_suit
     def initialize()
         @temp_suit = []
         @temp_num = []
@@ -146,9 +146,6 @@ class Rules
         end
         false
     end
-
-
-
 
 
 
