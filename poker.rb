@@ -175,6 +175,21 @@ class Rules
     end
 
     def three_of_a_kind(hand)
+        prepare_cards(hand)
+        temp_num.each do |val|
+            counter = 0
+            temp_num.each do |val2|
+                if val == val2
+                    counter += 1
+                end
+            end
+            if counter == 3
+                return true
+            else
+                break
+            end
+        end
+        false
     end
 
 
