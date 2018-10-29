@@ -181,6 +181,8 @@ class Rules
                     temp_num.delete(val2)
                 end
             end
+            p array1
+            p array2
             if array1.length == 4
                 return true
             end

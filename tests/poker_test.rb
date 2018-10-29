@@ -233,7 +233,7 @@ class Poker < Minitest::Test
         assert_equal(true, game.two_pair(temp))
     end
 
-    def test_2_pair_is
+    def test_2_pair_is_2
         temp = Hand.new
         temp.deal(Card.new("8", "H"))
         temp.deal(Card.new("2", "C"))
@@ -244,7 +244,7 @@ class Poker < Minitest::Test
         assert_equal(true, game.two_pair(temp))
     end
 
-    def test_2_pair_is
+    def test_2_pair_is_3
         temp = Hand.new
         temp.deal(Card.new("6", "H"))
         temp.deal(Card.new("6", "C"))
@@ -254,4 +254,16 @@ class Poker < Minitest::Test
         game = Rules.new
         assert_equal(true, game.two_pair(temp))
     end
+
+    def test_2_pair_isnt
+        temp = Hand.new
+        temp.deal(Card.new("6", "H"))
+        temp.deal(Card.new("3", "C"))
+        temp.deal(Card.new("4", "C"))
+        temp.deal(Card.new("2", "S"))
+        temp.deal(Card.new("4", "S"))
+        game = Rules.new
+        assert_equal(false, game.two_pair(temp))
+    end
+    
 end
