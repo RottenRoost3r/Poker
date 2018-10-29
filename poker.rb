@@ -167,4 +167,7 @@ class Rules
         prepare_cards(hand)
         dux_loop(temp_num, 3)
     end
+
+    def two_pair(hand)
+    end
 end
