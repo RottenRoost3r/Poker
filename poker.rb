@@ -171,22 +171,24 @@ class Rules
     def two_pair(hand)
         prepare_cards(hand)
         array1 = []
-        array2 = []
         temp_num.each do |val|
+            counter = 0
             temp_num.each do |val2|
                 if val == val2
-                    array1 << val 
-                    temp_num.delete(val)
-                    array1 << val2
-                    temp_num.delete(val2)
+                    counter +=1
                 end
             end
-            p array1
-            p array2
-            if array1.length == 4
+            if counter == 2
+                array1 << val
+                temp_num.delete(val)
+            end
+            if array1.length == 2
                 return true
             end
         end
         false
+    end
+
+    def pair(hand)
     end
 end

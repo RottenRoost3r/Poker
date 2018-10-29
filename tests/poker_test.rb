@@ -224,9 +224,9 @@ class Poker < Minitest::Test
 
     def test_2_pair_is
         temp = Hand.new
-        temp.deal(Card.new("2", "H"))
-        temp.deal(Card.new("2", "D"))
         temp.deal(Card.new("5", "H"))
+        temp.deal(Card.new("2", "D"))
+        temp.deal(Card.new("2", "H"))
         temp.deal(Card.new("7", "C"))
         temp.deal(Card.new("7", "S"))
         game = Rules.new
@@ -249,8 +249,8 @@ class Poker < Minitest::Test
         temp.deal(Card.new("6", "H"))
         temp.deal(Card.new("6", "C"))
         temp.deal(Card.new("4", "C"))
-        temp.deal(Card.new("2", "S"))
         temp.deal(Card.new("4", "S"))
+        temp.deal(Card.new("3", "S"))
         game = Rules.new
         assert_equal(true, game.two_pair(temp))
     end
@@ -265,5 +265,27 @@ class Poker < Minitest::Test
         game = Rules.new
         assert_equal(false, game.two_pair(temp))
     end
+
+    def test_2_pair_isnt_2
+        temp = Hand.new
+        temp.deal(Card.new("4", "H"))
+        temp.deal(Card.new("3", "C"))
+        temp.deal(Card.new("4", "C"))
+        temp.deal(Card.new("2", "S"))
+        temp.deal(Card.new("4", "S"))
+        game = Rules.new
+        assert_equal(false, game.two_pair(temp))
+    end
     
+    def test_pair_is
+        temp = Hand.new
+        temp.deal(Card.new("4", "H"))
+        temp.deal(Card.new("3", "C"))
+        temp.deal(Card.new("4", "D"))
+        temp.deal(Card.new("2", "S"))
+        temp.deal(Card.new("8", "S"))
+        game = Rules.new
+        assert_equal(true, game.pair(temp))
+    end
+
 end
