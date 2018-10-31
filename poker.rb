@@ -206,6 +206,8 @@ class Rules
             rank = 7
         elsif full_house(hand)
             rank = 6
+        elsif flush(hand)
+            rank = 5
         end
     end
 end
