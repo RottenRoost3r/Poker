@@ -145,6 +145,7 @@ class Poker < Minitest::Test
         temp.deal(Card.new("2", "H"))
         game = Rules.new
         assert_equal(true, game.full_house(temp))
+        assert_equal(6, game.ranking(temp))
     end
 
     def test_full_house_isnt
