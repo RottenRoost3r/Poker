@@ -214,6 +214,8 @@ class Rules
             rank = 3
         elsif two_pair(hand)
             rank = 2
+        elsif pair(hand)
+            rank = 1
         end
     end
 end
