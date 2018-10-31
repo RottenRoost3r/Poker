@@ -148,7 +148,11 @@ class Rules
 
     def straight(hand)
         prepare_cards(hand)
-        array_increments(1, temp_num)
+        if array_increments(1, temp_num) == true
+           return high_card(hand)
+        else
+            return false
+        end
     end
 
     def three_of_a_kind(hand)
