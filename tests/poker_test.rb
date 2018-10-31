@@ -164,7 +164,7 @@ class Poker < Minitest::Test
         temp.deal(Card.new("Q", "H"))
         temp.deal(Card.new("8", "H"))
         game = Rules.new
-        assert_equal(true, game.flush(temp))
+        assert_equal(12, game.flush(temp))
     end
 
     def test_flush_isnt

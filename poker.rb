@@ -143,7 +143,11 @@ class Rules
 
     def flush(hand)
         prepare_cards(hand)
-        dux_loop(temp_suit, 5)
+        if dux_loop(temp_suit, 5) == true
+            return high_card(hand)
+        else
+            return false
+        end
     end
 
     def straight(hand)
