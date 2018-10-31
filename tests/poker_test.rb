@@ -164,7 +164,7 @@ class Poker < Minitest::Test
         temp.deal(Card.new("Q", "H"))
         temp.deal(Card.new("8", "H"))
         game = Rules.new
-        assert_equal(12, game.flush(temp))
+        assert_equal(true, game.flush(temp))
     end
 
     def test_flush_isnt
@@ -186,7 +186,7 @@ class Poker < Minitest::Test
         temp.deal(Card.new("6", "C"))
         temp.deal(Card.new("7", "S"))
         game = Rules.new
-        assert_equal(7, game.straight(temp))
+        assert_equal(true, game.straight(temp))
     end
 
     def test_straight_isnt
@@ -319,5 +319,16 @@ class Poker < Minitest::Test
         temp.deal(Card.new("8", "D"))
         game = Rules.new
         assert_equal(9, game.high_card(temp))
+    end
+
+    def test_ranking
+        temp = Hand.new
+        temp.deal(Card.new("2", "C"))
+        temp.deal(Card.new("3", "C"))
+        temp.deal(Card.new("4", "C"))
+        temp.deal(Card.new("5", "C"))
+        temp.deal(Card.new("6", "C"))
+        game = Rules.new
+        assert_equal(8, game.ranking(temp))
     end
 end

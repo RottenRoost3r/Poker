@@ -143,20 +143,12 @@ class Rules
 
     def flush(hand)
         prepare_cards(hand)
-        if dux_loop(temp_suit, 5) == true
-            return high_card(hand)
-        else
-            return false
-        end
+        dux_loop(temp_suit, 5)
     end
 
     def straight(hand)
         prepare_cards(hand)
-        if array_increments(1, temp_num) == true
-           return high_card(hand)
-        else
-            return false
-        end
+        array_increments(1, temp_num)
     end
 
     def three_of_a_kind(hand)
@@ -204,5 +196,8 @@ class Rules
     def high_card(hand)
         prepare_cards(hand)
         return temp_num.sort().last
+    end
+
+    def ranking(hand)
     end
 end
