@@ -204,6 +204,8 @@ class Rules
             rank = 8
         elsif four_of_a_kind(hand)
             rank = 7
+        elsif full_house(hand)
+            rank = 6
         end
     end
 end
