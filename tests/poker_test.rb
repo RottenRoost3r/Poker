@@ -293,6 +293,7 @@ class Poker < Minitest::Test
         temp.deal(Card.new("8", "S"))
         game = Rules.new
         assert_equal(true, game.pair(temp))
+        assert_equal(1, game.ranking(temp))
     end
 
     def test_pair_isnt
