@@ -202,6 +202,8 @@ class Rules
         rank = 0
         if straight_flush(hand)
             rank = 8
+        elsif four_of_a_kind(hand)
+            rank = 7
         end
     end
 end
