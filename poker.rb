@@ -208,6 +208,8 @@ class Rules
             rank = 6
         elsif flush(hand)
             rank = 5
+        elsif straight(hand)
+            rank = 4
         end
     end
 end
