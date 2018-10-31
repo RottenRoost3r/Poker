@@ -210,6 +210,8 @@ class Rules
             rank = 5
         elsif straight(hand)
             rank = 4
+        elsif three_of_a_kind(hand)
+            rank = 3
         end
     end
 end
