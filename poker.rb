@@ -199,5 +199,9 @@ class Rules
     end
 
     def ranking(hand)
+        rank = 0
+        if straight_flush(hand)
+            rank = 8
+        end
     end
 end
