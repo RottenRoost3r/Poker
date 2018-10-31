@@ -316,6 +316,7 @@ class Poker < Minitest::Test
         temp.deal(Card.new("5", "S"))
         game = Rules.new
         assert_equal(6, game.high_card(temp))
+        assert_equal(0, game.ranking(temp))
     end
 
     def test_high_card
