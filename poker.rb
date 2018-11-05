@@ -208,6 +208,21 @@ class Rules
     end
 
     def two_pair_high_card_two(hand)
+        prepare_cards(hand)
+        array1 = []
+        temp_num.each do |val|
+            counter = 0
+            temp_num.each do |val2|
+                if val == val2
+                    counter +=1
+                end
+            end
+            if counter == 2
+                array1 << val
+                temp_num.delete(val)
+            end
+        end
+        return array1.sort().first
     end
 
     def pair(hand)
