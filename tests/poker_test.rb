@@ -373,4 +373,59 @@ class Poker < Minitest::Test
         game = Rules.new
         assert_equal(8, game.ranking(temp))
     end
+
+    def test_comparison
+        black = Hand.new
+        white = Hand.new
+        black.deal(Card.new("5", "D"))
+        black.deal(Card.new("5", "H"))
+        black.deal(Card.new("6", "C"))
+        black.deal(Card.new("6", "D"))
+        black.deal(Card.new("3", "C"))
+
+        white.deal(Card.new("5", "S"))
+        white.deal(Card.new("5", "C"))
+        white.deal(Card.new("6", "S"))
+        white.deal(Card.new("6", "H"))
+        white.deal(Card.new("7", "C"))
+        game = Rules.new
+        assert_equal("white wins", game.comparison(black, white))
+    end
+
+    def test_comparison_2
+        black = Hand.new
+        white = Hand.new
+        black.deal(Card.new("5", "D"))
+        black.deal(Card.new("5", "H"))
+        black.deal(Card.new("6", "C"))
+        black.deal(Card.new("3", "C"))
+        black.deal(Card.new("6", "D"))
+
+        white.deal(Card.new("2", "S"))
+        white.deal(Card.new("2", "C"))
+        white.deal(Card.new("3", "S"))
+        white.deal(Card.new("3", "H"))
+        white.deal(Card.new("7", "C"))
+        game = Rules.new
+        assert_equal("black wins", game.comparison(black, white))
+    end
+
+    def test_comparison_3
+        black = Hand.new
+        white = Hand.new
+        black.deal(Card.new("5", "D"))
+        black.deal(Card.new("5", "H"))
+        black.deal(Card.new("6", "C"))
+        black.deal(Card.new("3", "C"))
+        black.deal(Card.new("6", "D"))
+
+        white.deal(Card.new("5", "C"))
+        white.deal(Card.new("5", "S"))
+        white.deal(Card.new("6", "D"))
+        white.deal(Card.new("3", "H"))
+        white.deal(Card.new("6", "H"))
+        game = Rules.new
+        assert_equal("it's a tie", game.comparison(black, white))
+    end
+
 end

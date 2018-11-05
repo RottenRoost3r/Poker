@@ -270,5 +270,39 @@ class Rules
         rank
     end
 
-    
+    def comparison(black, white)
+        if ranking(white) > ranking(black)
+            return "white wins"
+        elsif ranking(white) < ranking(black)
+            return "black wins"
+        elsif ranking(white) == ranking(black)
+            if ranking(white) == 2 && ranking(black) == 2
+               if two_pair_high_card_one(white) == two_pair_high_card_one(black)
+                    if two_pair_high_card_two(white) == two_pair_high_card_two(black)
+                        if two_pair_high_card_three(white) == two_pair_high_card_three(black)
+                            return "it's a tie"
+                        else
+                            if two_pair_high_card_three(white) > two_pair_high_card_three(black)
+                                return "white wins"
+                            else
+                                return "black wins"
+                            end
+                        end
+                    elsif two_pair_high_card_two(white) > two_pair_high_card_two(black)
+                        return "white wins"
+                    else 
+                        return "black wins"
+                    end
+              
+                elsif two_pair_high_card_one(white) > two_pair_high_card_one(black)
+                    p two_pair_high_card_one(white)
+                    p two_pair_high_card_one(black)
+                    return "white wins"
+                elsif two_pair_high_card_one(white) < two_pair_high_card_one(black)
+                    return "black wins"
+                end
+            end
+        end
+        
+    end   
 end
