@@ -226,7 +226,16 @@ class Rules
     end
 
     def two_pair_high_card_three(hand)
-        
+        prepare_cards(hand)
+        array1 = []
+        temp_num.each do |val|
+            temp_num.each do |val2|
+                if val == val2
+                    temp_num.delete(val)
+                end
+            end
+        end
+        return temp_num.last
     end
 
     def pair(hand)
