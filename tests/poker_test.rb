@@ -207,11 +207,11 @@ class Poker < Minitest::Test
 
     def test_3_of_a_kind_is
         temp = Hand.new
-        temp.deal(Card.new("2", "H"))
-        temp.deal(Card.new("A", "C"))
-        temp.deal(Card.new("2", "H"))
-        temp.deal(Card.new("7", "H"))
         temp.deal(Card.new("2", "D"))
+        temp.deal(Card.new("2", "C"))
+        temp.deal(Card.new("4", "C"))
+        temp.deal(Card.new("2", "H"))
+        temp.deal(Card.new("6", "D"))
         game = Rules.new
         assert_equal(true, game.three_of_a_kind(temp))
         assert_equal(3, game.ranking(temp))
@@ -231,9 +231,9 @@ class Poker < Minitest::Test
     def test_2_pair_is
         temp = Hand.new
         temp.deal(Card.new("5", "H"))
-        temp.deal(Card.new("2", "D"))
-        temp.deal(Card.new("2", "H"))
-        temp.deal(Card.new("7", "C"))
+        temp.deal(Card.new("5", "D"))
+        temp.deal(Card.new("3", "H"))
+        temp.deal(Card.new("3", "C"))
         temp.deal(Card.new("7", "S"))
         game = Rules.new
         assert_equal(true, game.two_pair(temp))
@@ -255,7 +255,7 @@ class Poker < Minitest::Test
         temp = Hand.new
         temp.deal(Card.new("6", "H"))
         temp.deal(Card.new("6", "C"))
-        temp.deal(Card.new("4", "C"))
+        temp.deal(Card.new("3", "C"))
         temp.deal(Card.new("4", "S"))
         temp.deal(Card.new("3", "S"))
         game = Rules.new
@@ -283,12 +283,23 @@ class Poker < Minitest::Test
         game = Rules.new
         assert_equal(false, game.two_pair(temp))
     end
+
+    def test_2_pair_high_one
+        temp = Hand.new
+        temp.deal(Card.new("5", "H"))
+        temp.deal(Card.new("5", "D"))
+        temp.deal(Card.new("3", "H"))
+        temp.deal(Card.new("3", "C"))
+        temp.deal(Card.new("7", "S"))
+        game = Rules.new
+        assert_equal(5, game.two_pair_high_card_one(temp))
+    end
     
     def test_pair_is
         temp = Hand.new
         temp.deal(Card.new("4", "H"))
         temp.deal(Card.new("3", "C"))
-        temp.deal(Card.new("4", "D"))
+        temp.deal(Card.new("8", "D"))
         temp.deal(Card.new("2", "S"))
         temp.deal(Card.new("8", "S"))
         game = Rules.new
@@ -340,7 +351,4 @@ class Poker < Minitest::Test
         game = Rules.new
         assert_equal(8, game.ranking(temp))
     end
-
-    
-
 end

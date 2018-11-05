@@ -61,6 +61,7 @@ class Deck
     end
 
     def deal_hand()
+        shuffle_deck()
         y = Hand.new
         5.times do
             y.deal(@deck.pop())
@@ -76,6 +77,8 @@ class Rules
     attr_reader :temp_suit
     attr_reader :counter
     attr_reader :val
+    attr_reader :black
+    attr_reader :white
     def initialize()
         @temp_suit = []
         @temp_num = []
@@ -132,10 +135,18 @@ class Rules
 
     def full_house(hand)
         prepare_cards(hand)
-        if dux_loop(temp_num, 3) == true
-            temp_num.delete(val)
-            if temp_num[0] == temp_num[1]
-                return true
+        temp_num.each do |val|
+            counter = 0
+            temp_num.each do |val2|
+                if val == val2
+                    counter += 1
+                end
+            end
+            if counter == 3
+                temp_num.delete(val)
+                if temp_num[0] == temp_num[1]
+                    return true
+                end
             end
         end
         false
@@ -170,11 +181,18 @@ class Rules
                 array1 << val
                 temp_num.delete(val)
             end
+            
+        end
             if array1.length == 2
                 return true
             end
-        end
         false
+    end
+
+    def two_pair_high_card_one(hand)
+    end
+
+    def two_pair_high_card_two(hand)
     end
 
     def pair(hand)
@@ -202,10 +220,12 @@ class Rules
         values = {pair(hand) => 1, two_pair(hand) => 2, three_of_a_kind(hand) => 3, straight(hand) => 4, flush(hand) => 5, full_house(hand) => 6, four_of_a_kind(hand) => 7, straight_flush(hand) => 8}
         rank = 0
         values.each do |key, value|
-            if key
+            if key 
                 rank = value
             end
         end
         rank
     end
+
+    
 end
