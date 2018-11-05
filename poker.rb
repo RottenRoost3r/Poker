@@ -292,7 +292,7 @@ class Rules
                     end
                 elsif two_pair_high_card_one(white) > two_pair_high_card_one(black)
                     return "white wins"
-                elsif two_pair_high_card_one(white) < two_pair_high_card_one(black)
+                else
                     return "black wins"
                 end
             end
