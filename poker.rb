@@ -77,9 +77,6 @@ class Rules
     attr_reader :temp_suit
     attr_reader :counter
     attr_reader :val
-    attr_reader :array1
-    attr_reader :black
-    attr_reader :white
     def initialize()
         @temp_suit = []
         @temp_num = []
@@ -293,10 +290,7 @@ class Rules
                     else 
                         return "black wins"
                     end
-              
                 elsif two_pair_high_card_one(white) > two_pair_high_card_one(black)
-                    p two_pair_high_card_one(white)
-                    p two_pair_high_card_one(black)
                     return "white wins"
                 elsif two_pair_high_card_one(white) < two_pair_high_card_one(black)
                     return "black wins"
