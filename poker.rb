@@ -199,23 +199,13 @@ class Rules
     end
 
     def ranking(hand)
+        values = {pair(hand) => 1, two_pair(hand) => 2, three_of_a_kind(hand) => 3, straight(hand) => 4, flush(hand) => 5, full_house(hand) => 6, four_of_a_kind(hand) => 7, straight_flush(hand) => 8}
         rank = 0
-        if straight_flush(hand)
-            rank = 8
-        elsif four_of_a_kind(hand)
-            rank = 7
-        elsif full_house(hand)
-            rank = 6
-        elsif flush(hand)
-            rank = 5
-        elsif straight(hand)
-            rank = 4
-        elsif three_of_a_kind(hand)
-            rank = 3
-        elsif two_pair(hand)
-            rank = 2
-        elsif pair(hand)
-            rank = 1
+        values.each do |key, value|
+            if key
+                rank = value
+            end
         end
+        rank
     end
 end
