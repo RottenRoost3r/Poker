@@ -77,6 +77,7 @@ class Rules
     attr_reader :temp_suit
     attr_reader :counter
     attr_reader :val
+    attr_reader :array1
     attr_reader :black
     attr_reader :white
     def initialize()
@@ -181,7 +182,6 @@ class Rules
                 array1 << val
                 temp_num.delete(val)
             end
-            
         end
             if array1.length == 2
                 return true
@@ -190,6 +190,21 @@ class Rules
     end
 
     def two_pair_high_card_one(hand)
+        prepare_cards(hand)
+        array1 = []
+        temp_num.each do |val|
+            counter = 0
+            temp_num.each do |val2|
+                if val == val2
+                    counter +=1
+                end
+            end
+            if counter == 2
+                array1 << val
+                temp_num.delete(val)
+            end
+        end
+        return array1.sort().last
     end
 
     def two_pair_high_card_two(hand)
