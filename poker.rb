@@ -225,6 +225,10 @@ class Rules
         return array1.sort().first
     end
 
+    def two_pair_high_card_three(hand)
+        
+    end
+
     def pair(hand)
         prepare_cards(hand)
         temp_num.each do |val|
