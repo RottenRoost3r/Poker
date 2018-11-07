@@ -377,11 +377,11 @@ class Rules
                 end
             elsif pair_high_card(white) > pair_high_card(black)
                 return "white wins"
-            elsif pair_high_card(white) < pair_high_card(black)
+            else
                 return "black wins"
             end
         end
-        if ranking(white) == 0 && ranking(black) == 0
+        if ranking(white) == 0 && ranking(black) == 0 || ranking(white) == 5 && ranking(black) == 5 
             if high_card(white)[4] == high_card(black)[4]
                 if high_card(white)[3] == high_card(black)[3]
                     if high_card(white)[2] == high_card(black)[2]
