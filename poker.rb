@@ -352,10 +352,33 @@ class Rules
         end
         if ranking(white) == 1 && ranking(black) == 1
             if pair_high_card(white) == pair_high_card(black)
-                if pair_high_card_two(white) == pair_high_card_two(black)
+                if pair_high_card_two(white)[2] == pair_high_card_two(black)[2]
+                    if pair_high_card_two(white)[1] == pair_high_card_two(black)[1]
+                        if pair_high_card_two(white)[0] == pair_high_card_two(black)[0]
+                            return "it's a tie"
+                        else
+                            if pair_high_card_two(white)[0] > pair_high_card_two(black)[0]
+                                return "white wins"
+                            else
+                                return "black wins"
+                            end
+                        end
+                    elsif pair_high_card_two(white)[1] > pair_high_card_two(black)[1]
+                        return "white wins"
+                    else
+                        return "black wins"
+                    end
+                elsif pair_high_card_two(white)[2] > pair_high_card_two(black)[2]
+                    return "white wins"
+                else
+                    return "black wins"
                 end
+            elsif pair_high_card(white) > pair_high_card(black)
+                return "white wins"
+            else
+                return "black wins"
             end
         end
-
-    end   
+    end
+   
 end
