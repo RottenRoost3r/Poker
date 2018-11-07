@@ -348,7 +348,7 @@ class Poker < Minitest::Test
         temp.deal(Card.new("4", "S"))
         temp.deal(Card.new("5", "S"))
         game = Rules.new
-        assert_equal(6, game.high_card(temp))
+        assert_equal([2, 3, 4, 5, 6], game.high_card(temp))
         assert_equal(0, game.ranking(temp))
     end
 
@@ -360,7 +360,7 @@ class Poker < Minitest::Test
         temp.deal(Card.new("5", "H"))
         temp.deal(Card.new("8", "D"))
         game = Rules.new
-        assert_equal(9, game.high_card(temp))
+        assert_equal([2, 5, 8, 8, 9], game.high_card(temp))
     end
 
     def test_ranking_straight_flush

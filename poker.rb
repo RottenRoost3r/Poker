@@ -77,6 +77,8 @@ class Rules
     attr_reader :temp_suit
     attr_reader :counter
     attr_reader :val
+    attr_reader :black
+    attr_reader :white
     def initialize()
         @temp_suit = []
         @temp_num = []
@@ -299,7 +301,7 @@ class Rules
 
     def high_card(hand)
         prepare_cards(hand)
-        return temp_num.sort().last
+        return temp_num.sort()
     end
 
     def ranking(hand)
@@ -374,11 +376,56 @@ class Rules
                     return "black wins"
                 end
             elsif pair_high_card(white) > pair_high_card(black)
+                p pair_high_card
                 return "white wins"
             else
                 return "black wins"
             end
         end
+        if ranking(white) == 0 && ranking(black) == 0
+            if high_card(white)[4] == high_card(black)[4]
+                if high_card(white)[3] == high_card(black)[3]
+                    if high_card(white)[2] == high_card(black)[2]
+                        if high_card(white)[1] == high_card(black)[1]
+                            if high_card(white)[0] == high_card(black)[0]
+                                return "it's a tie"
+                            elsif high_card(white)[0] > high_card(black)[0]
+                                return "white wins"
+                            else
+                                return "black wins"
+                            end
+                        elsif high_card(white)[1] > high_card(black)[1]
+                            return "white wins"
+                        else
+                            return "black wins"
+                        end
+                    elsif high_card(white)[2] > high_card(black)[2]
+                        return "white wins"
+                    else
+                        return "black wins"
+                    end
+                elsif high_card(white)[3] > high_card(black)[3]
+                    return "white wins"
+                else 
+                    return "black wins"
+                end
+            elsif high_card(white)[4] > high_card(black)[4]
+                return "white wins"
+            else 
+                return "black wins"
+            end
+        end
+    end
+
+    def play_game()
+        x = Deck.new
+        black = x.deal_hand()
+        white = x.deal_hand()
+        return comparison(black, white)
     end
    
 end
+
+game = Rules.new
+
+p game.play_game()
