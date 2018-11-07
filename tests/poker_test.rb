@@ -450,7 +450,7 @@ class Poker < Minitest::Test
         assert_equal(7, game.full_house_high_card(temp))
     end
 
-    def test_comparison
+    def test_comparison_full_house_1
         black = Hand.new
         white = Hand.new
         black.deal(Card.new("5", "D"))
@@ -468,7 +468,7 @@ class Poker < Minitest::Test
         assert_equal("white wins", game.comparison(black, white))
     end
 
-    def test_comparison
+    def test_comparison_full_house_2
         black = Hand.new
         white = Hand.new
         black.deal(Card.new("6", "D"))
