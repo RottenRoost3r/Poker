@@ -161,12 +161,8 @@ class Rules
             end
             if counter == 3
                 return val
-                if temp_num[0] == temp_num[1]
-                  
-                end
             end
         end
-   
     end
 
     def flush(hand)
