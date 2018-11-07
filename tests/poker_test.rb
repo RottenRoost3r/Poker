@@ -534,7 +534,7 @@ class Poker < Minitest::Test
         temp.deal(Card.new("8", "D"))
         temp.deal(Card.new("6", "H"))
         game = Rules.new
-        assert_equal(7, game.pair_high_card_two(temp))
+        assert_equal([2, 6, 7], game.pair_high_card_two(temp))
     end
 
     def test_pair_high_card_two_2
@@ -545,7 +545,7 @@ class Poker < Minitest::Test
         temp.deal(Card.new("3", "D"))
         temp.deal(Card.new("6", "H"))
         game = Rules.new
-        assert_equal(6, game.pair_high_card_two(temp))
+        assert_equal([2, 3, 6], game.pair_high_card_two(temp))
     end
 
     def test_comparison_pair_high_card_two

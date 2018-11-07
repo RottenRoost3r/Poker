@@ -294,7 +294,7 @@ class Rules
                 temp_num.delete(val)
             end
         end
-        return temp_num.sort().last
+        return temp_num.sort()
     end
 
     def high_card(hand)
@@ -351,11 +351,11 @@ class Rules
             end
         end
         if ranking(white) == 1 && ranking(black) == 1
-            if pair_high_card(white) > pair_high_card(black)
-                return "white wins"
-            else
-                return "black wins"
+            if pair_high_card(white) == pair_high_card(black)
+                if pair_high_card_two(white) == pair_high_card_two(black)
+                end
             end
         end
+
     end   
 end
