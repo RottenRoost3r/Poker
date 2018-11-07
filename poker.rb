@@ -312,6 +312,12 @@ class Rules
                 end
             end
         end
-        
+        if ranking(white) == 6 && ranking(black) == 6
+            if full_house_high_card(white) > full_house_high_card(black)
+                return "white wins"
+            else
+                return "black wins"
+            end
+        end
     end   
 end
