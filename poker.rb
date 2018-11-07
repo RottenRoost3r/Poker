@@ -279,7 +279,9 @@ class Rules
                 return val
             end
         end
-    
+    end
+
+    def pair_high_card_two(hand)
     end
 
     def high_card(hand)
