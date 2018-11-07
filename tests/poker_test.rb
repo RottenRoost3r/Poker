@@ -583,4 +583,22 @@ class Poker < Minitest::Test
         game = Rules.new
         assert_equal("it's a tie", game.comparison(black, white))
     end
+
+    def test_comparison_pair_high_card_two_3
+        black = Hand.new
+        white = Hand.new
+        black.deal(Card.new("8", "D"))
+        black.deal(Card.new("8", "H"))
+        black.deal(Card.new("2", "C"))
+        black.deal(Card.new("6", "D"))
+        black.deal(Card.new("3", "C"))
+
+        white.deal(Card.new("8", "S"))
+        white.deal(Card.new("8", "C"))
+        white.deal(Card.new("3", "S"))
+        white.deal(Card.new("6", "S"))
+        white.deal(Card.new("4", "C"))
+        game = Rules.new
+        assert_equal("white wins", game.comparison(black, white))
+    end
 end
