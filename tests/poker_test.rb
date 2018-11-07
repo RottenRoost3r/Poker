@@ -428,4 +428,15 @@ class Poker < Minitest::Test
         assert_equal("it's a tie", game.comparison(black, white))
     end
 
+    def test_full_house_high_card
+        temp = Hand.new
+        temp.deal(Card.new("3", "H"))
+        temp.deal(Card.new("3", "S"))
+        temp.deal(Card.new("3", "C"))
+        temp.deal(Card.new("2", "D"))
+        temp.deal(Card.new("2", "H"))
+        game = Rules.new
+        assert_equal(3, game.full_house_high_card(temp))
+    end
+
 end

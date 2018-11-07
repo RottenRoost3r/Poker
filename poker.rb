@@ -150,6 +150,9 @@ class Rules
         false
     end
 
+    def full_house_high_card(hand)
+    end
+
     def flush(hand)
         prepare_cards(hand)
         dux_loop(temp_suit, 5)
