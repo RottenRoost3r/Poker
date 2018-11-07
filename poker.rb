@@ -267,7 +267,19 @@ class Rules
     end
 
     def pair_high_card(hand)
-        
+        prepare_cards(hand)
+        temp_num.each do |val|
+            counter = 0
+            temp_num.each do |val2|
+                if val == val2
+                    counter += 1
+                end
+            end
+            if counter == 2
+                return val
+            end
+        end
+    
     end
 
     def high_card(hand)
