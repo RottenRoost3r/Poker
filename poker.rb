@@ -376,9 +376,8 @@ class Rules
                     return "black wins"
                 end
             elsif pair_high_card(white) > pair_high_card(black)
-                p pair_high_card
                 return "white wins"
-            else
+            elsif pair_high_card(white) < pair_high_card(black)
                 return "black wins"
             end
         end
@@ -427,5 +426,4 @@ class Rules
 end
 
 game = Rules.new
-
 p game.play_game()
