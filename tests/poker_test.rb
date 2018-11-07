@@ -468,4 +468,21 @@ class Poker < Minitest::Test
         assert_equal("white wins", game.comparison(black, white))
     end
 
+    def test_comparison
+        black = Hand.new
+        white = Hand.new
+        black.deal(Card.new("6", "D"))
+        black.deal(Card.new("3", "H"))
+        black.deal(Card.new("6", "C"))
+        black.deal(Card.new("6", "D"))
+        black.deal(Card.new("3", "C"))
+
+        white.deal(Card.new("9", "S"))
+        white.deal(Card.new("9", "C"))
+        white.deal(Card.new("3", "S"))
+        white.deal(Card.new("3", "H"))
+        white.deal(Card.new("3", "C"))
+        game = Rules.new
+        assert_equal("black wins", game.comparison(black, white))
+    end
 end

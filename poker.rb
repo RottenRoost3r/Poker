@@ -319,5 +319,6 @@ class Rules
                 return "black wins"
             end
         end
+        
     end   
 end
