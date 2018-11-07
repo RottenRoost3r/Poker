@@ -439,4 +439,15 @@ class Poker < Minitest::Test
         assert_equal(3, game.full_house_high_card(temp))
     end
 
+    def test_full_house_high_card
+        temp = Hand.new
+        temp.deal(Card.new("3", "H"))
+        temp.deal(Card.new("7", "S"))
+        temp.deal(Card.new("7", "C"))
+        temp.deal(Card.new("3", "D"))
+        temp.deal(Card.new("7", "H"))
+        game = Rules.new
+        assert_equal(7, game.full_house_high_card(temp))
+    end
+
 end

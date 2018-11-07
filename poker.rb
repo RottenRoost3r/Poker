@@ -153,15 +153,20 @@ class Rules
     def full_house_high_card(hand)
         prepare_cards(hand)
         temp_num.each do |val|
-            arr = []
+            counter = 0
             temp_num.each do |val2|
                 if val == val2
-                    arr << val
+                    counter += 1
                 end
             end
-            return arr[0]
+            if counter == 3
+                return val
+                if temp_num[0] == temp_num[1]
+                  
+                end
+            end
         end
-
+   
     end
 
     def flush(hand)
