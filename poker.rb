@@ -266,6 +266,10 @@ class Rules
         false 
     end
 
+    def pair_high_card(hand)
+        
+    end
+
     def high_card(hand)
         prepare_cards(hand)
         return temp_num.sort().last
@@ -319,6 +323,6 @@ class Rules
                 return "black wins"
             end
         end
-        
+
     end   
 end
