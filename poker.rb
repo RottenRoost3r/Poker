@@ -282,6 +282,19 @@ class Rules
     end
 
     def pair_high_card_two(hand)
+        prepare_cards(hand)
+        temp_num.each do |val|
+            counter = 0
+            temp_num.each do |val2|
+                if val == val2
+                    counter += 1
+                end
+            end
+            if counter == 2
+                temp_num.delete(val)
+            end
+        end
+        return temp_num.sort().last
     end
 
     def high_card(hand)
