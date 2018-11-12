@@ -5,7 +5,7 @@ body{
     background: url(/images/card_table.jpg);
     background-size: 100%;
     font-family: 'Roboto Mono', monospace;
-    text-shadow: 0 0 3px greenyellow;
+    text-shadow: 0 0 3px green;
     color: green
 }
 
