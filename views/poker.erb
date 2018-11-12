@@ -4,8 +4,30 @@
 </head>
 
 <body>
-<div class="winner">
-<% game = Rules.new%>
-<%=game.play_game()%>
+<form method="post" action="poker">
+<div class="winner" name="winner">
+    <%game = Rules.new%>
+    <%=game.play_game()%>
 </div>
+
+<div class="black_hand" name="black_hand">
+    <h3>BLACK</h3>
+    <%game.black.hand.each do |v|%>
+        <%=v.card_name%>
+        <%=" "%>
+    <%end%>
+</div>
+
+<div class="white_hand" name="white_hand">
+    <h3>WHITE</h3>
+    <%game.white.hand.each do |v|%> 
+        <%=v.card_name%>
+        <%=" "%>
+    <%end%>
+</div>
+
+
+
+</form>
+
 </body>

@@ -68,7 +68,6 @@ class Deck
         end
         return y
     end
-
     attr_reader :deck
 end
 
@@ -317,39 +316,39 @@ class Rules
 
     def comparison(black, white)
         if ranking(white) > ranking(black)
-            return "white wins"
+            return "White Wins"
         elsif ranking(white) < ranking(black)
-            return "black wins"
+            return "Black Wins"
         elsif ranking(white) == ranking(black)
             if ranking(white) == 2 && ranking(black) == 2
                if two_pair_high_card_one(white) == two_pair_high_card_one(black)
                     if two_pair_high_card_two(white) == two_pair_high_card_two(black)
                         if two_pair_high_card_three(white) == two_pair_high_card_three(black)
-                            return "it's a tie"
+                            return "It's a Tie"
                         else
                             if two_pair_high_card_three(white) > two_pair_high_card_three(black)
-                                return "white wins"
+                                return "White Wins"
                             else
-                                return "black wins"
+                                return "Black Wins"
                             end
                         end
                     elsif two_pair_high_card_two(white) > two_pair_high_card_two(black)
-                        return "white wins"
+                        return "White Wins"
                     else 
-                        return "black wins"
+                        return "Black Wins"
                     end
                 elsif two_pair_high_card_one(white) > two_pair_high_card_one(black)
-                    return "white wins"
+                    return "White Wins"
                 else
-                    return "black wins"
+                    return "Black Wins"
                 end
             end
         end
         if ranking(white) == 6 && ranking(black) == 6
             if full_house_high_card(white) > full_house_high_card(black)
-                return "white wins"
+                return "White Wins"
             else
-                return "black wins"
+                return "Black Wins"
             end
         end
         if ranking(white) == 1 && ranking(black) == 1
@@ -357,28 +356,28 @@ class Rules
                 if pair_high_card_two(white)[2] == pair_high_card_two(black)[2]
                     if pair_high_card_two(white)[1] == pair_high_card_two(black)[1]
                         if pair_high_card_two(white)[0] == pair_high_card_two(black)[0]
-                            return "it's a tie"
+                            return "It's a Tie"
                         else
                             if pair_high_card_two(white)[0] > pair_high_card_two(black)[0]
-                                return "white wins"
+                                return "White Wins"
                             else
-                                return "black wins"
+                                return "Black Wins"
                             end
                         end
                     elsif pair_high_card_two(white)[1] > pair_high_card_two(black)[1]
-                        return "white wins"
+                        return "White Wins"
                     else
-                        return "black wins"
+                        return "Black Wins"
                     end
                 elsif pair_high_card_two(white)[2] > pair_high_card_two(black)[2]
-                    return "white wins"
+                    return "White Wins"
                 else
-                    return "black wins"
+                    return "Black Wins"
                 end
             elsif pair_high_card(white) > pair_high_card(black)
-                return "white wins"
+                return "White Wins"
             else
-                return "black wins"
+                return "Black Wins"
             end
         end
         if ranking(white) == 0 && ranking(black) == 0 || ranking(white) == 5 && ranking(black) == 5 
@@ -387,42 +386,45 @@ class Rules
                     if high_card(white)[2] == high_card(black)[2]
                         if high_card(white)[1] == high_card(black)[1]
                             if high_card(white)[0] == high_card(black)[0]
-                                return "it's a tie"
+                                return "It's a Tie"
                             elsif high_card(white)[0] > high_card(black)[0]
-                                return "white wins"
+                                return "White Wins"
                             else
-                                return "black wins"
+                                return "Black Wins"
                             end
                         elsif high_card(white)[1] > high_card(black)[1]
-                            return "white wins"
+                            return "White Wins"
                         else
-                            return "black wins"
+                            return "Black Wins"
                         end
                     elsif high_card(white)[2] > high_card(black)[2]
-                        return "white wins"
+                        return "White Wins"
                     else
-                        return "black wins"
+                        return "Black Wins"
                     end
                 elsif high_card(white)[3] > high_card(black)[3]
-                    return "white wins"
+                    return "White Wins"
                 else 
-                    return "black wins"
+                    return "Black Wins"
                 end
             elsif high_card(white)[4] > high_card(black)[4]
-                return "white wins"
+                return "White Wins"
             else 
-                return "black wins"
+                return "Black Wins"
             end
         end
     end
 
+
     def play_game()
         x = Deck.new
-        black = x.deal_hand()
-        white = x.deal_hand()
+        @black = x.deal_hand()
+        @white = x.deal_hand()
+        p black
         return comparison(black, white)
     end
-   
+   attr_reader :black
+   attr_reader :white
 end
 
 # game = Rules.new

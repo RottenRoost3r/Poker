@@ -1,0 +1,12 @@
+.winner{
+    text-align: center;
+    width: 197px;
+    height: 100px;
+    font-size: 44px;
+    border-style: inset;
+    border-color: black;
+    font-family: fantasy;
+    margin-left: 550px;
+    background-color: red;
+    color: white;
+}
