@@ -15,13 +15,23 @@
     <%game.black.hand.each do |v|%>
         <%=v.card_name%>
         <% if v.card_name == "2H"%>
-        <img src=/images/2H.jpg>
+        <img width="100" height="153" src=/images/2H.jpg>
         <% elsif v.card_name == "2D"%>
-        <img src=/images/2D.jpg>
+        <img width="100" height="153" src=/images/2D.jpg>
         <% elsif v.card_name == "2C"%>
-        <img src=/images/2C.jpg>
+        <img width="100" height="153" src=/images/2C.jpg>
         <% elsif v.card_name == "2S"%>
-        <img src=/images/2S.jpg>
+        <img width="100" height="153" src=/images/2S.jpg>
+        <%end%>
+
+        <% if v.card_name == "3H"%>
+        <img width="100" height="153" src=/images/3H.jpg>
+        <% elsif v.card_name == "3D"%>
+        <img width="100" height="153" src=/images/3D.jpg>
+        <% elsif v.card_name == "3C"%>
+        <img width="100" height="153" src=/images/3C.jpg>
+        <% elsif v.card_name == "3S"%>
+        <img width="100" height="153" src=/images/3S.jpg>
         <%end%>
         <%=" "%>
     <%end%>
