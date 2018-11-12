@@ -13,7 +13,6 @@
 <div class="black_hand" name="black_hand">
     <h3>BLACK</h3>
     <%game.black.hand.each do |v|%>
-        <%=v.card_name%>
         <% if v.card_name == "2H"%>
         <img width="100" height="153" src=/images/2H.jpg>
         <% elsif v.card_name == "2D"%>
@@ -150,7 +149,6 @@
 <div class="white_hand" name="white_hand">
     <h3>WHITE</h3>
     <%game.white.hand.each do |v|%> 
-        <%=v.card_name%>
         <% if v.card_name == "2H"%>
         <img width="100" height="153" src=/images/2H.jpg>
         <% elsif v.card_name == "2D"%>
