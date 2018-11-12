@@ -5,6 +5,8 @@ body{
     background: url(/images/card_table.jpg);
     background-size: 100%;
     font-family: 'Roboto Mono', monospace;
+    text-shadow: 0 0 3px greenyellow;
+    color: green
 }
 
 .winner{
@@ -15,8 +17,8 @@ body{
     border-style: inset;
     border-color: black;
     margin-left: 550px;
-    background-color: forestgreen;
-    color: black;
+    background: url(/images/robco.png)
+    
 }
 
 .white_hand{
@@ -24,8 +26,9 @@ body{
     width: 402px;
     float: right;
     border-style: inset;
-    background-color: forestgreen;
+    background: url(/images/robco.png);
     border-color: black;
+    font-size: 22px;
 }
 
 .black_hand{
@@ -33,6 +36,7 @@ body{
     width: 402px;
     position: absolute;
     border-style: inset;
-    background-color: forestgreen;
+    background: url(/images/robco.png);
     border-color: black;
+    font-size: 22px;
 }
