@@ -425,5 +425,5 @@ class Rules
    
 end
 
-game = Rules.new
-p game.play_game()
+# game = Rules.new
+# p game.play_game()
