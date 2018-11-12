@@ -14,6 +14,15 @@
     <h3>BLACK</h3>
     <%game.black.hand.each do |v|%>
         <%=v.card_name%>
+        <% if v.card_name == "2H"%>
+        <img src=/images/2H.jpg>
+        <% elsif v.card_name == "2D"%>
+        <img src=/images/2D.jpg>
+        <% elsif v.card_name == "2C"%>
+        <img src=/images/2C.jpg>
+        <% elsif v.card_name == "2S"%>
+        <img src=/images/2S.jpg>
+        <%end%>
         <%=" "%>
     <%end%>
 </div>
