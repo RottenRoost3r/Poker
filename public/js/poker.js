@@ -3,15 +3,11 @@ function bigReveal() {
     var y = document.getElementById("showbutton");
     var m = document.getElementById("audio1");
     var z = document.getElementById("audio2");
+   
+    x.style.display = "block";
+    y.style.display = "none";
     m.play(); 
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        y.style.display = "none";
-        z.play(); 
-    }else{
-        x.style.display = "none"
-        y.style.display = "block"
-    }   
+     
 } 
 
 
