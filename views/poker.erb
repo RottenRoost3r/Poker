@@ -12,7 +12,7 @@
 
 
     <a href='/'>Play Again</a>
-    <button type="button" id="showbutton"  onclick="bigReveal()">Click to Reveal Winner</button>
+    <button type="button" id="showbutton" onclick="bigReveal()">Click to Reveal Winner</button>
 </head>
 
 <body >
@@ -22,6 +22,11 @@
 <div class="glow" name="winner" id="winner">
     <%game = Rules.new%>
     <%=game.play_game()%>
+    <%if game.play_game() == "Black Wins"%>
+       <br> <%=game.how_they_win(game.black)%>
+    <%elsif game.play_game() == "White Wins"%>
+       <br> <%=game.how_they_win(game.white)%>
+    <%end%>
 
 </div>
 
@@ -298,11 +303,4 @@
     <%end%>
 </div>
 </form>
-
-<script>
-function playAudio() { 
-    var m = document.getElementById("revealaudio");
-    m.play(); 
-}
-</script>
 </body>

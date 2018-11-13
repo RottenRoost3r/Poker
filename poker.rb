@@ -311,7 +311,7 @@ class Rules
                 rank = value
             end
         end
-        rank
+        return rank
     end
 
     def comparison(black, white)
@@ -415,6 +415,27 @@ class Rules
         end
     end
 
+    def how_they_win(hand)
+        if ranking(hand) == 8
+            return "Straight Flush"
+        elsif ranking(hand) == 7
+            return "Four of a Kind"
+        elsif ranking(hand) == 6
+            return "Full House"
+        elsif ranking(hand) == 5
+            return "Flush"
+        elsif ranking(hand) == 4
+            return "Straight"
+        elsif ranking(hand) == 3
+            return "Three of a Kind"
+        elsif ranking(hand) == 2
+            return "Two Pair"
+        elsif ranking(hand) == 1
+            return "Pair"
+        elsif ranking(hand) == 0
+            return "High Card"
+        end
+    end
 
     def play_game()
         x = Deck.new
