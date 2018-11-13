@@ -426,6 +426,3 @@ class Rules
    attr_reader :black
    attr_reader :white
 end
-
-# game = Rules.new
-# p game.play_game()

@@ -6,10 +6,22 @@ body{
     background-size: 100%;
     font-family: 'Roboto Mono', monospace;
     text-shadow: 0 0 3px green;
-    color: green
+    color: forestgreen
+}
+a{
+    margin-left: 600px;
+    border-style: inset;
+    border-color: black;
+    background: url(/images/robco.png);
+    text-shadow: 0 0 3px green;
+    color: green;
+    webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
 }
 
-.winner{
+.glow {
+    display: none;
     text-align: center;
     width: 197px;
     height: 100px;
@@ -17,9 +29,20 @@ body{
     border-style: inset;
     border-color: black;
     margin-left: 550px;
-    background: url(/images/robco.png)
-    
-}
+    background: url(/images/robco.png);
+    webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+  @-webkit-keyframes glow {
+    from {
+       text-shadow: 0 0 10px green, 0 0 10px green, 0 0 10px green, 0 0 10px green, 0 0 10px green, 0 0 10px green, 0 0 10px green;
+    }
+    to {
+      text-shadow: 2 2 11px forestgreen, 2 2 11px forestgreen, 2 2 11px green, 2 2 11px green, 2 2 11px green, 2 2 11px green, 2 2 11px green;
+    }
+  }
 
 .white_hand{
     text-align: center;
@@ -29,6 +52,9 @@ body{
     background: url(/images/robco.png);
     border-color: black;
     font-size: 22px;
+    webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
 }
 
 .black_hand{
@@ -39,4 +65,21 @@ body{
     background: url(/images/robco.png);
     border-color: black;
     font-size: 22px;
+    webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+button{
+    margin-left: 538px;
+    border-style: inset;
+    border-color: black;
+    margin-top: 22;
+    background: url(/images/robco.png);
+    text-shadow: 0 0 3px green;
+    color: green;
+    font-size: 22px;
+    webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
 }
