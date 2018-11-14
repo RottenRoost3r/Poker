@@ -9,7 +9,7 @@ body{
     color: forestgreen
 }
 a{
-    margin-left: 600px;
+    /* margin-left: 600px; */
     border-style: inset;
     border-color: black;
     background: url(/images/robco.png);
@@ -86,7 +86,7 @@ a{
 }
 
 button{
-    margin-left: 538px;
+    margin-left: 433px;
     border-style: inset;
     border-color: black;
     margin-top: 22;

@@ -21,10 +21,11 @@
 
 <div class="glow" name="winner" id="winner">
     <%game = Rules.new%>
-    <%=game.play_game()%>
-    <%if game.play_game() == "Black Wins"%>
+    <%=y = game.play_game()%>
+    
+    <%if y == "Black Wins"%>
        <br> <%=game.how_they_win(game.black)%>
-    <%elsif game.play_game() == "White Wins"%>
+    <%elsif y == "White Wins"%>
        <br> <%=game.how_they_win(game.white)%>
     <%end%>
 
@@ -302,5 +303,10 @@
         <%=" "%>
     <%end%>
 </div>
+
+
 </form>
 </body>
+<footer>
+
+</footer>
