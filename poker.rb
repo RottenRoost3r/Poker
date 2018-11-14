@@ -407,27 +407,44 @@ class Rules
 
 if ranking(white) == 0 && ranking(black) == 0 && high_card(white)[4] == high_card(black)[4] && high_card(white)[3] == high_card(black)[3] && high_card(white)[2] == high_card(black)[2] && high_card(white)[1] == high_card(black)[1] && high_card(white)[0] == high_card(black)[0]
     return "It's a Tie"
-elsif high_card(white)[0] > high_card(black)[0] && high_card(white)[4] == high_card(black)[4] && high_card(white)[3] == high_card(black)[3] && high_card(white)[2] == high_card(black)[2] && high_card(white)[1] == high_card(black)[1]
+elsif high_card(white)[0] > high_card(black)[0] && high_card(white)[1] == high_card(black)[1] && high_card(white)[2] == high_card(black)[2] && high_card(white)[3] == high_card(black)[3] && high_card(white)[4] == high_card(black)[4]
     return "White Wins"
-elsif high_card(white)[0] < high_card(black)[0] && high_card(white)[4] == high_card(black)[4] && high_card(white)[3] == high_card(black)[3] && high_card(white)[2] == high_card(black)[2] && high_card(white)[1] == high_card(black)[1] 
+elsif high_card(white)[0] < high_card(black)[0] && high_card(white)[1] == high_card(black)[1] && high_card(white)[2] == high_card(black)[2] && high_card(white)[3] == high_card(black)[3] && high_card(white)[4] == high_card(black)[4]
     return "Black Wins"
-elsif high_card(white)[1] > high_card(black)[1] && high_card(white)[4] == high_card(black)[4] && high_card(white)[3] == high_card(black)[3] && high_card(white)[2] == high_card(black)[2]
+elsif high_card(white)[1] > high_card(black)[1] && high_card(white)[2] == high_card(black)[2] && high_card(white)[3] == high_card(black)[3] && high_card(white)[4] == high_card(black)[4]
     return "White Wins"
-elsif high_card(white)[1] < high_card(black)[1] && high_card(white)[4] == high_card(black)[4] && high_card(white)[3] == high_card(black)[3] && high_card(white)[2] == high_card(black)[2]
+elsif high_card(white)[1] < high_card(black)[1] && high_card(white)[2] == high_card(black)[2] && high_card(white)[3] == high_card(black)[3] && high_card(white)[4] == high_card(black)[4]
     return "Black Wins"
-elsif high_card(white)[2] > high_card(black)[2] && high_card(white)[4] == high_card(black)[4] && high_card(white)[3] == high_card(black)[3]
+elsif high_card(white)[2] > high_card(black)[2] && high_card(white)[3] == high_card(black)[3] && high_card(white)[4] == high_card(black)[4]
     return "White Wins"
-elsif high_card(white)[2] < high_card(black)[2] && high_card(white)[4] == high_card(black)[4] && high_card(white)[3] == high_card(black)[3]
+elsif high_card(white)[2] < high_card(black)[2] && high_card(white)[3] == high_card(black)[3] && high_card(white)[4] == high_card(black)[4]
     return "Black Wins"
 elsif high_card(white)[3] > high_card(black)[3] && high_card(white)[4] == high_card(black)[4]
     return "White Wins"
 elsif high_card(white)[3] < high_card(black)[3] && high_card(white)[4] == high_card(black)[4]
     return "Black Wins"
-elsif high_card(white)[4] > high_card(black)[4] 
+elsif high_card(white)[0] > high_card(black)[0] 
+    return "White Wins"
+elsif high_card(white)[0] < high_card(black)[0]
+    return "Black Wins"
+elsif high_card(white)[1] > high_card(black)[1]
+    return "White Wins"
+elsif high_card(white)[1] < high_card(black)[1]
+    return "Black Wins"
+elsif high_card(white)[2] > high_card(black)[2]
+    return "White Wins"
+elsif high_card(white)[2] < high_card(black)[2]
+    return "Black Wins"
+elsif high_card(white)[3] > high_card(black)[3]
+    return "White Wins"
+elsif high_card(white)[3] < high_card(black)[3]
+    return "Black Wins"
+elsif high_card(white)[4] > high_card(black)[4]
     return "White Wins"
 elsif high_card(white)[4] < high_card(black)[4]
     return "Black Wins"
 end
+
 
 end
     
