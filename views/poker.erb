@@ -36,12 +36,10 @@
 <div class="black_hand" name="black_hand">
     <h3>BLACK</h3>
     <%game.black.hand.each do |v|%>
-    <%=v.card_name%>
         <%if v.card_name == "AD"%>
-        
             <img width="125" height="178" src=/images/Ace_of_Diamonds.jpg>
         <%else%>
-        <img width="125" height="178" src="/images/<%=v.card_name%>.jpg">
+            <img width="125" height="178" src="/images/<%=v.card_name%>.jpg">
         <%end%>
     <%end%>
 </div>
@@ -49,11 +47,10 @@
 <div class="white_hand" name="white_hand">
     <h3>WHITE</h3>
     <%game.white.hand.each do |v|%> 
-    <%=v.card_name%>
        <%if v.card_name == "AD"%>
             <img width="125" height="178" src=/images/Ace_of_Diamonds.jpg>
         <%else%>
-        <img width="125" height="178" src="/images/<%=v.card_name%>.jpg">
+            <img width="125" height="178" src="/images/<%=v.card_name%>.jpg">
         <%end%>
     <%end%>
 </div>
