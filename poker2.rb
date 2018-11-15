@@ -1,5 +1,5 @@
 
-class Deck #establishes deck and cards
+class Deck #establishes deck and cards, deals hands
     VALUE = %i[two three four five six seven eight nine ten jack queen king ace]
     SUITS = %i[hearts clubs diamonds spades]
     
@@ -28,7 +28,7 @@ class Deck #establishes deck and cards
   
 end
 
-class Hand #deals hands, returns array with all valued info
+class Hand_chopper  #returns array with all valued info
 end
 
 class ChickenDinner #finds winner
