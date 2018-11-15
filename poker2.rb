@@ -4,7 +4,7 @@ class Deck #establishes deck and cards
     SUITS = %i[heart club diamond spade]
 
     Card = Struct.new(:value, :suit)
-    VALUE.map {|val| SUITS.map {|suit| Card.new(val, suit)}}
+    VALUE.flat_map {|val| SUITS.map {|suit| Card.new(val, suit)}}
 end
 
 class Hand #deals hands, returns array with all valued info
