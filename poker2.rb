@@ -15,10 +15,10 @@ class Card
 end
 
 class Deck < Card #establishes deck and cards, deals hands
-   def initialize()
+    def initialize()
         @deck = VALUE.flat_map {|val| SUITS.map {|suit| Card.new(val, suit)}}   
         @shuffled = @deck.shuffle
-   end
+    end
 
     def deal()
         hand = []
@@ -33,10 +33,6 @@ class Deck < Card #establishes deck and cards, deals hands
 end
 
 class Hand  #returns array with all valued info
-    m = Deck.new
-    black = m.deal
-    puts "--"
-    white = m.deal 
 end
 
 class ChickenDinner #finds winner
