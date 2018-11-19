@@ -9,26 +9,30 @@ class Deck #establishes deck and cards, deals hands
         end
         def ==(other) #redefine == to check for value instead of id
             self.value == other.value &&
-              self.suit == other.suit
-          end
+            self.suit == other.suit
+        end
     end
     
-   deck = VALUE.flat_map {|val| SUITS.map {|suit| Card.new(val, suit)}}
-   shuffled = deck.shuffle
-
-    hand = []
-
-    5.times do
-        hand << shuffled.pop().to_s
-    end
-
-    puts hand
    
 
-  
+    def deal()
+        @deck = VALUE.flat_map {|val| SUITS.map {|suit| Card.new(val, suit)}}
+        @shuffled = @deck.shuffle
+        hand = []
+        5.times do
+            hand << @shuffled.pop().to_s
+        end
+        puts hand
+    end
+   
+    attr_reader :shuffled
+    attr_reader :deck
 end
 
-class Hand_chopper  #returns array with all valued info
+
+class Hand  #returns array with all valued info
+    m = Deck.new
+    m.deal
 end
 
 class ChickenDinner #finds winner
