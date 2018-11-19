@@ -1,5 +1,4 @@
-
-class Deck #establishes deck and cards, deals hands
+class Card
     VALUE = %i[two three four five six seven eight nine ten jack queen king ace]
     SUITS = %i[hearts clubs diamonds spades]
     
@@ -12,12 +11,16 @@ class Deck #establishes deck and cards, deals hands
             self.suit == other.suit
         end
     end
-    
-   
+end
+
+class Deck < Card #establishes deck and cards, deals hands
+    def build_deck()
+    @deck = VALUE.flat_map {|val| SUITS.map {|suit| Card.new(val, suit)}}
+    @shuffled = @deck.shuffle
+    end
 
     def deal()
-        @deck = VALUE.flat_map {|val| SUITS.map {|suit| Card.new(val, suit)}}
-        @shuffled = @deck.shuffle
+        build_deck()
         hand = []
         5.times do
             hand << @shuffled.pop().to_s
@@ -29,10 +32,11 @@ class Deck #establishes deck and cards, deals hands
     attr_reader :deck
 end
 
-
 class Hand  #returns array with all valued info
     m = Deck.new
-    m.deal
+    black = m.deal
+    puts "--"
+    white = m.deal
 end
 
 class ChickenDinner #finds winner
