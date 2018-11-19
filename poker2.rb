@@ -6,6 +6,7 @@ class Card
         def to_s #redefine to_s to return card names as string
             "#{value.capitalize} of #{suit.capitalize}"
         end
+
         def ==(other) #redefine == to check for value instead of id
             self.value == other.value &&
             self.suit == other.suit
@@ -14,13 +15,12 @@ class Card
 end
 
 class Deck < Card #establishes deck and cards, deals hands
-    def build_deck()
-    @deck = VALUE.flat_map {|val| SUITS.map {|suit| Card.new(val, suit)}}
-    @shuffled = @deck.shuffle
-    end
+   def initialize()
+        @deck = VALUE.flat_map {|val| SUITS.map {|suit| Card.new(val, suit)}}   
+        @shuffled = @deck.shuffle
+   end
 
     def deal()
-        build_deck()
         hand = []
         5.times do
             hand << @shuffled.pop().to_s
@@ -36,7 +36,7 @@ class Hand  #returns array with all valued info
     m = Deck.new
     black = m.deal
     puts "--"
-    white = m.deal
+    white = m.deal 
 end
 
 class ChickenDinner #finds winner
