@@ -7,4 +7,18 @@ class Poker2 < Minitest::Test
         assert_equal(1, 1)
     end
 
+    def test_that_matcher_matches
+        temp = Deck.new
+        temp_arr = []
+        temp_arr << ["2", "Hearts"]
+        temp_arr << ["2", "Clubs"]
+        temp_arr << ["4", "Hearts" ]
+        temp_arr << ["3", "Spades"]
+        temp_arr << ["9", "Diamonds"]
+        temp.deal(temp_arr)
+        game = Hand.new
+        assert_equal(true, temp.hand.matcher(2))
+    end
+    
+
 end

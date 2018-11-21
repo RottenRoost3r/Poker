@@ -38,6 +38,16 @@ class Deck < Card #establishes deck and cards, deals hands
 end
 
 class Hand  #returns array with all valued info
+    def initialize()
+        @cards = []
+    end
+    def <<(other_card)
+        @cards << other_card
+    end
+
+    def matcher(num)
+    end
+
 end
 
 class ChickenDinner #finds winner
