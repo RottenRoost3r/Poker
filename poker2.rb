@@ -67,6 +67,7 @@ class Hand  #returns array with all valued info
     end
 
     def four_of_a_kind()
+        matcher(4)
     end
 
 end
