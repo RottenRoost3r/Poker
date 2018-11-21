@@ -62,6 +62,9 @@ class Hand  #returns array with all valued info
         matcher(2)
     end
 
+    def three_of_a_kind()
+    end
+
 end
 
 class ChickenDinner #finds winner
