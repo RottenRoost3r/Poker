@@ -44,9 +44,10 @@ class Hand  #returns array with all valued info
     def <<(other_card)
         @cards << other_card
     end
-
+    
     def matcher(num)
         temp_arr = []
+        is = true ; wrong = false
         @cards.each do |v|
             temp_arr << v.value.to_s
         end
@@ -68,6 +69,9 @@ class Hand  #returns array with all valued info
 
     def four_of_a_kind()
         matcher(4)
+    end
+
+    def two_pair()
     end
 
 end
