@@ -1,10 +1,10 @@
 class Card
-    VALUE = %i[two three four five six seven eight nine ten jack queen king ace]
-    SUITS = %i[hearts clubs diamonds spades]
+    VALUE = %i[1 2 3 4 5 6 7 8 9 10 11 12 13 14]
+    SUITS = %i[Hearts Clubs Diamonds Spades]
     
     Card = Struct.new(:value, :suit) do 
         def to_s #redefine to_s to return card names as string
-            "#{value.capitalize} of #{suit.capitalize}"
+            "#{value} of #{suit}"
         end
 
         def ==(other) #redefine == to check for value instead of id
@@ -15,21 +15,26 @@ class Card
 end
 
 class Deck < Card #establishes deck and cards, deals hands
-    def initialize()
+    def initialize() #creates and shuffles deck
+        @hand = []
         @deck = VALUE.flat_map {|val| SUITS.map {|suit| Card.new(val, suit)}}   
         @shuffled = @deck.shuffle
     end
 
-    def deal()
-        hand = []
-        5.times do
-            hand << @shuffled.pop().to_s
+    def deal(card_array) #deals a hand of five random cards
+        @hand = Hand.new
+        # 5.times do
+        #     hand << @shuffled.pop().to_s
+        # end
+        card_array.each do |v|
+            @hand << Card.new(v[0], v[1])
         end
-        puts hand
+        return hand
     end
    
     attr_reader :shuffled
     attr_reader :deck
+    attr_reader :hand
 end
 
 class Hand  #returns array with all valued info
