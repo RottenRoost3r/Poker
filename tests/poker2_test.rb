@@ -32,6 +32,19 @@ class Poker2 < Minitest::Test
         game = Hand.new
         assert_equal(true, temp.hand.pair())
     end
+
+    def test_that_pair_works_2
+        temp = Deck.new
+        temp_arr = []
+        temp_arr << ["14", "Hearts"]
+        temp_arr << ["4", "Hearts"]
+        temp_arr << ["4", "Hearts" ]
+        temp_arr << ["3", "Spades"]
+        temp_arr << ["9", "Diamonds"]
+        temp.deal(temp_arr)
+        game = Hand.new
+        assert_equal(true, temp.hand.pair())
+    end
     
 
 end
