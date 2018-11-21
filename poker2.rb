@@ -41,13 +41,13 @@ class Hand  #returns array with all valued info
     def initialize()
         @cards = []
     end
+
     def <<(other_card)
         @cards << other_card
     end
-    
+
     def matcher(num)
         temp_arr = []
-        is = true ; wrong = false
         @cards.each do |v|
             temp_arr << v.value.to_s
         end
@@ -74,6 +74,8 @@ class Hand  #returns array with all valued info
     def two_pair()
     end
 
+    def full_house()
+    end
 end
 
 class ChickenDinner #finds winner

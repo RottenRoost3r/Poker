@@ -98,16 +98,29 @@ class Poker2 < Minitest::Test
         assert_equal(true, temp.hand.four_of_a_kind())
     end
 
-    def test_two_pair_works
+    # def test_two_pair_works
+    #     temp = Deck.new
+    #     temp_arr = []
+    #     temp_arr << ["9", "Spades"]
+    #     temp_arr << ["6", "Hearts"]
+    #     temp_arr << ["6", "Spades" ]
+    #     temp_arr << ["2", "Clubs"]
+    #     temp_arr << ["9", "Diamonds"]
+    #     temp.deal(temp_arr)
+    #     game = Hand.new
+    #     assert_equal(true, temp.hand.two_pair())
+    # end
+
+    def test_blaaaah
         temp = Deck.new
         temp_arr = []
         temp_arr << ["9", "Spades"]
         temp_arr << ["6", "Hearts"]
         temp_arr << ["6", "Spades" ]
-        temp_arr << ["2", "Clubs"]
+        temp_arr << ["9", "Clubs"]
         temp_arr << ["9", "Diamonds"]
         temp.deal(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.two_pair())
+        assert_equal(true, temp.hand.full_house())
     end
 end
