@@ -85,5 +85,16 @@ class Poker2 < Minitest::Test
         assert_equal(true, temp.hand.four_of_a_kind())
     end
     
-
+    def test_that_4_of_a_kind_works
+        temp = Deck.new
+        temp_arr = []
+        temp_arr << ["5", "Spades"]
+        temp_arr << ["3", "Hearts"]
+        temp_arr << ["3", "Spades" ]
+        temp_arr << ["3", "Clubs"]
+        temp_arr << ["3", "Diamonds"]
+        temp.deal(temp_arr)
+        game = Hand.new
+        assert_equal(true, temp.hand.four_of_a_kind())
+    end
 end
