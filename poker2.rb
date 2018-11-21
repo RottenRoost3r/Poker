@@ -55,6 +55,9 @@ class Hand  #returns array with all valued info
         end
     end
 
+    def pair()
+    end
+
 end
 
 class ChickenDinner #finds winner
