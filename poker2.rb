@@ -63,6 +63,7 @@ class Hand  #returns array with all valued info
     end
 
     def three_of_a_kind()
+        matcher(3)
     end
 
 end
