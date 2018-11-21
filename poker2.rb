@@ -42,23 +42,34 @@ class Hand  #returns array with all valued info
         @cards = []
     end
     def <<(other_card)
+        p "cards = #{@cards}"
+        p "other_card = #{other_card}"
         @cards << other_card
     end
 
     def matcher(num)
         temp_arr = []
         @cards.each do |v|
+            p "this is v in @cards #{v}"
             temp_arr << v.value.to_s
         end
         temp_arr.each do |v|
-            return temp_arr.count(v) == num ? true : false
+            p "this is v #{v}"
+            p "this is the count #{temp_arr.count(v)}"
+            if temp_arr.count(v) == num
+                return true
+            end
         end
+        false
     end
 
     def pair()
+        matcher(2)
     end
 
 end
+
+return temp_arr.count(v) == num ? true : false
 
 class ChickenDinner #finds winner
     include Comparable
