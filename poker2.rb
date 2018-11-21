@@ -75,6 +75,7 @@ class Hand  #returns array with all valued info
     end
 
     def full_house()
+        matcher(2) && matcher(3) ? true : false
     end
 end
 
