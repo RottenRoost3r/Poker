@@ -46,6 +46,13 @@ class Hand  #returns array with all valued info
     end
 
     def matcher(num)
+        temp_arr = []
+        @cards.each do |v|
+            temp_arr << v.value.to_s
+        end
+        temp_arr.each do |v|
+            return temp_arr.count(v) == num ? true : false
+        end
     end
 
 end
