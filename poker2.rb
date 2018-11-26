@@ -62,10 +62,10 @@ class Hand  #returns array with all valued info
         end
         temp_arr.each do |v|
             if temp_arr.count(v) == num
-                return true
+                return 1
             end
         end
-        false
+        0
     end
 
     def pair()
@@ -84,7 +84,7 @@ class Hand  #returns array with all valued info
     end
 
     def full_house()
-        matcher(2) && matcher(3) ? true : false
+        matcher(2) && matcher(3) ? 1 : 0
     end
 
     def high_hand(hand)

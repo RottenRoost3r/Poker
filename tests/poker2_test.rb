@@ -17,7 +17,7 @@ class Poker2 < Minitest::Test
         temp_arr << ["9", "Diamonds"]
         temp.deal(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.matcher(2))
+        assert_equal(1, temp.hand.matcher(2))
     end
 
     def test_that_pair_works
@@ -30,7 +30,7 @@ class Poker2 < Minitest::Test
         temp_arr << ["9", "Diamonds"]
         temp.deal(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.pair())
+        assert_equal(1, temp.hand.pair())
     end
 
     def test_that_pair_works_2
@@ -43,7 +43,7 @@ class Poker2 < Minitest::Test
         temp_arr << ["9", "Diamonds"]
         temp.deal(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.pair())
+        assert_equal(1, temp.hand.pair())
     end
 
     def test_that_3_of_a_kind_works
@@ -56,7 +56,7 @@ class Poker2 < Minitest::Test
         temp_arr << ["4", "Diamonds"]
         temp.deal(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.three_of_a_kind())
+        assert_equal(1, temp.hand.three_of_a_kind())
     end
 
     def test_that_3_of_a_kind_works
@@ -69,7 +69,7 @@ class Poker2 < Minitest::Test
         temp_arr << ["4", "Diamonds"]
         temp.deal(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.three_of_a_kind())
+        assert_equal(1, temp.hand.three_of_a_kind())
     end
 
     def test_that_4_of_a_kind_works
@@ -82,7 +82,7 @@ class Poker2 < Minitest::Test
         temp_arr << ["4", "Diamonds"]
         temp.deal(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.four_of_a_kind())
+        assert_equal(1, temp.hand.four_of_a_kind())
     end
     
     def test_that_4_of_a_kind_works
@@ -95,7 +95,7 @@ class Poker2 < Minitest::Test
         temp_arr << ["3", "Diamonds"]
         temp.deal(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.four_of_a_kind())
+        assert_equal(1, temp.hand.four_of_a_kind())
     end
 
     def test_full_house
@@ -108,7 +108,7 @@ class Poker2 < Minitest::Test
         temp_arr << ["9", "Diamonds"]
         temp.deal(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.full_house())
+        assert_equal(1, temp.hand.full_house())
     end
 
     # def test_two_pair_works
