@@ -46,7 +46,7 @@ class Hand  #returns array with all valued info
         @cards << other_card
     end
 
-    def prepare_cards
+    def prepare_cards()
         @value_arr = []
         @suit_arr = []
         @cards.each do |v|
@@ -81,6 +81,17 @@ class Hand  #returns array with all valued info
     end
 
     def two_pair()
+        prepare_cards()
+        
+        y = []; is = true; wrong = false
+        value_arr.each do |v|
+            value_arr.count(v) == 2 ?  y << v : false
+        end
+        z = value_arr.select { |k| y[0] != k} 
+        z.each do |v|
+            z.count(v) == 2 ? y << is : y << wrong 
+        end
+        return y.include?(true) == true ? 1 : 0
     end
 
     def full_house()
@@ -90,7 +101,6 @@ class Hand  #returns array with all valued info
     def high_hand(hand)
         prepare_cards()
         return @value_arr.sort.join.to_i
-
     end
 
     attr_reader :value_arr
