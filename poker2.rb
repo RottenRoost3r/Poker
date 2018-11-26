@@ -77,6 +77,9 @@ class Hand  #returns array with all valued info
     def full_house()
         matcher(2) && matcher(3) ? true : false
     end
+
+    def high_hand()
+    end
 end
 
 class ChickenDinner #finds winner
