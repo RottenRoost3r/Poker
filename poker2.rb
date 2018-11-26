@@ -111,6 +111,9 @@ class Hand  #returns array with all valued info
         array_increments(value_arr) == true ? 1 : 0
     end
 
+    def straight_flush()
+    end
+
     def high_hand(hand)
         prepare_cards()
         return @value_arr.sort.join.to_i
