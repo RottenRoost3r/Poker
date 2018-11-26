@@ -98,6 +98,8 @@ class Hand  #returns array with all valued info
     end
 
     def flush()
+        prepare_cards()
+        suit_arr.uniq.count == 1 ? 1 : 0
     end
 
     def high_hand(hand)
