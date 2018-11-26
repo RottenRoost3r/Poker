@@ -112,6 +112,7 @@ class Hand  #returns array with all valued info
     end
 
     def straight_flush()
+        straight() == 1 && flush() == 1 ? 1 : 0
     end
 
     def high_hand(hand)
