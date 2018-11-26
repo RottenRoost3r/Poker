@@ -186,7 +186,179 @@ class Poker2 < Minitest::Test
         temp_arr << ["7", "Spades"]
         temp.deal(temp_arr)
         game = Hand.new
-        assert_equal(1110134567, temp.hand.score())
+        assert_equal(1011100034567, temp.hand.score().to_i)
     end
 
+    def test_score_vs
+        temp = Deck.new
+        temp_arr = []
+        temp_arr2 = []
+        temp_arr << ["3", "Spades"]
+        temp_arr << ["4", "Spades"]
+        temp_arr << ["5", "Spades"]
+        temp_arr << ["6", "Spades"]
+        temp_arr << ["7", "Spades"]
+
+        temp_arr2 << ["3", "Spades"]
+        temp_arr2 << ["4", "Spades"]
+        temp_arr2 << ["5", "Spades"]
+        temp_arr2 << ["6", "Spades"]
+        temp_arr2 << ["7", "Clubs"]
+        x = temp.deal(temp_arr)
+        y = temp.deal(temp_arr2)
+        game = Hand.new
+        assert_equal(true, x.score() > y.score())
+    end
+
+    def test_score_pair_vs_2pair
+        temp = Deck.new
+        temp_arr = []
+        temp_arr2 = []
+        temp_arr << ["3", "Spades"]
+        temp_arr << ["3", "Diamonds"]
+        temp_arr << ["8", "Clubs"]
+        temp_arr << ["2", "Hearts"]
+        temp_arr << ["14", "Diamonds"]
+
+        temp_arr2 << ["3", "Spades"]
+        temp_arr2 << ["3", "Clubs"]
+        temp_arr2 << ["5", "Diamonds"]
+        temp_arr2 << ["5", "Spades"]
+        temp_arr2 << ["7", "Clubs"]
+        x = temp.deal(temp_arr)
+        y = temp.deal(temp_arr2)
+        
+        game = Hand.new
+        assert_equal(true, y.score() > x.score())
+    end
+
+    def test_score_vs_pair_vs_highcard
+        temp = Deck.new
+        temp_arr = []
+        temp_arr2 = []
+        temp_arr << ["3", "Spades"]
+        temp_arr << ["3", "Diamonds"]
+        temp_arr << ["8", "Clubs"]
+        temp_arr << ["2", "Hearts"]
+        temp_arr << ["14", "Diamonds"]
+
+        temp_arr2 << ["3", "Spades"]
+        temp_arr2 << ["6", "Clubs"]
+        temp_arr2 << ["5", "Diamonds"]
+        temp_arr2 << ["11", "Spades"]
+        temp_arr2 << ["7", "Clubs"]
+        x = temp.deal(temp_arr)
+        y = temp.deal(temp_arr2)
+        
+        game = Hand.new
+        assert_equal(true, y.score() < x.score())
+    end
+
+    def test_score_vs_pair_vs_fullhouse
+        temp = Deck.new
+        temp_arr = []
+        temp_arr2 = []
+        temp_arr << ["3", "Spades"]
+        temp_arr << ["3", "Diamonds"]
+        temp_arr << ["8", "Clubs"]
+        temp_arr << ["2", "Hearts"]
+        temp_arr << ["14", "Diamonds"]
+
+        temp_arr2 << ["3", "Spades"]
+        temp_arr2 << ["3", "Clubs"]
+        temp_arr2 << ["5", "Diamonds"]
+        temp_arr2 << ["5", "Spades"]
+        temp_arr2 << ["5", "Clubs"]
+        x = temp.deal(temp_arr)
+        y = temp.deal(temp_arr2)
+        
+        game = Hand.new
+        assert_equal(true, y.score() > x.score())
+    end
+
+    def test_score_vs_fullhouse_vs_fullhouse_with_high_3
+        temp = Deck.new
+        temp_arr = []
+        temp_arr2 = []
+        temp_arr << ["3", "Spades"]
+        temp_arr << ["3", "Diamonds"]
+        temp_arr << ["6", "Clubs"]
+        temp_arr << ["6", "Hearts"]
+        temp_arr << ["6", "Diamonds"]
+
+        temp_arr2 << ["3", "Spades"]
+        temp_arr2 << ["3", "Clubs"]
+        temp_arr2 << ["5", "Diamonds"]
+        temp_arr2 << ["5", "Spades"]
+        temp_arr2 << ["5", "Clubs"]
+        x = temp.deal(temp_arr)
+        y = temp.deal(temp_arr2)
+        
+        game = Hand.new
+        assert_equal(true, y.score() < x.score())
+    end
+
+    def test_score_vs_2pair_vs_2pair
+        temp = Deck.new
+        temp_arr = []
+        temp_arr2 = []
+        temp_arr << ["3", "Spades"]
+        temp_arr << ["3", "Diamonds"]
+        temp_arr << ["5", "Clubs"]
+        temp_arr << ["5", "Hearts"]
+        temp_arr << ["14", "Diamonds"]
+
+        temp_arr2 << ["3", "Spades"]
+        temp_arr2 << ["3", "Clubs"]
+        temp_arr2 << ["5", "Diamonds"]
+        temp_arr2 << ["5", "Spades"]
+        temp_arr2 << ["14", "Clubs"]
+        x = temp.deal(temp_arr)
+        y = temp.deal(temp_arr2)
+        
+        game = Hand.new
+        assert_equal(true, y.score() == x.score())
+    end
+
+    def test_score_vs_4_kind_vs_fullhouse
+        temp = Deck.new
+        temp_arr = []
+        temp_arr2 = []
+        temp_arr << ["3", "Spades"]
+        temp_arr << ["3", "Diamonds"]
+        temp_arr << ["3", "Clubs"]
+        temp_arr << ["3", "Hearts"]
+        temp_arr << ["6", "Diamonds"]
+
+        temp_arr2 << ["3", "Spades"]
+        temp_arr2 << ["3", "Clubs"]
+        temp_arr2 << ["5", "Diamonds"]
+        temp_arr2 << ["5", "Spades"]
+        temp_arr2 << ["5", "Clubs"]
+        x = temp.deal(temp_arr)
+        y = temp.deal(temp_arr2)
+        game = Hand.new
+        assert_equal(true, y.score() < x.score())
+    end
+
+    def test_score_vs_4_kind_vs_high_card
+        temp = Deck.new
+        temp_arr = []
+        temp_arr2 = []
+        temp_arr << ["3", "Spades"]
+        temp_arr << ["6", "Spades"]
+        temp_arr << ["6", "Clubs"]
+        temp_arr << ["6", "Hearts"]
+        temp_arr << ["6", "Diamonds"]
+
+        temp_arr2 << ["2", "Spades"]
+        temp_arr2 << ["8", "Clubs"]
+        temp_arr2 << ["11", "Diamonds"]
+        temp_arr2 << ["5", "Spades"]
+        temp_arr2 << ["3", "Clubs"]
+        x = temp.deal(temp_arr)
+        y = temp.deal(temp_arr2)
+        game = Hand.new
+        assert_equal(true, y.score() < x.score())
+    end
 end

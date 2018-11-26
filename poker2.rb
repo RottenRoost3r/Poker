@@ -122,13 +122,10 @@ class Hand  #returns array with all valued info
 
     def score()
         prepare_cards()
-        [0, pair(), two_pair(), three_of_a_kind(), straight(), flush(), full_house(), four_of_a_kind(), straight_flush(), high_hand(value_arr)].join.to_i
+        #[pair(), two_pair(), three_of_a_kind(), straight(), flush(), full_house(), four_of_a_kind(), straight_flush(), high_hand(value_arr)].join
+        [straight_flush(), four_of_a_kind(), full_house(), flush(), straight(), three_of_a_kind(), two_pair(), pair(), high_hand(value_arr)].join
     end
 
     attr_reader :value_arr
     attr_reader :suit_arr
-end
-
-class ChickenDinner #finds winner
-    include Comparable
 end
