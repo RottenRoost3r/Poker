@@ -136,4 +136,17 @@ class Poker2 < Minitest::Test
         game = Hand.new
         assert_equal(23689, temp.hand.high_hand(temp_arr))
     end
+
+    def test_flush
+        temp = Deck.new
+        temp_arr = []
+        temp_arr << ["3", "Spades"]
+        temp_arr << ["6", "Spades"]
+        temp_arr << ["2", "Spades" ]
+        temp_arr << ["9", "Spades"]
+        temp_arr << ["8", "Spades"]
+        temp.deal(temp_arr)
+        game = Hand.new
+        assert_equal(1, temp.hand.flush())
+    end
 end

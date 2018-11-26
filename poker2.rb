@@ -82,7 +82,6 @@ class Hand  #returns array with all valued info
 
     def two_pair()
         prepare_cards()
-        
         y = []; is = true; wrong = false
         value_arr.each do |v|
             value_arr.count(v) == 2 ?  y << v : false
@@ -96,6 +95,9 @@ class Hand  #returns array with all valued info
 
     def full_house()
         matcher(2) && matcher(3) ? 1 : 0
+    end
+
+    def flush()
     end
 
     def high_hand(hand)
