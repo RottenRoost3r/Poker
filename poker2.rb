@@ -108,7 +108,7 @@ class Hand  #returns array with all valued info
 
     def straight()
         prepare_cards()
-        return array_increments(value_arr)
+        array_increments(value_arr) == true ? 1 : 0
     end
 
     def high_hand(hand)
