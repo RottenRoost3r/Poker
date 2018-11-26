@@ -112,12 +112,17 @@ class Hand  #returns array with all valued info
     end
 
     def straight_flush()
-        straight() == 1 && flush() == 1 ? 1 : 0
+        straight() && flush() == 1 ? 1 : 0
     end
 
     def high_hand(hand)
         prepare_cards()
         return @value_arr.sort.join.to_i
+    end
+
+    def score()
+        prepare_cards()
+        [0, pair(), two_pair(), three_of_a_kind(), straight(), flush(), full_house(), four_of_a_kind(), straight_flush(), high_hand(value_arr)].join.to_i
     end
 
     attr_reader :value_arr
