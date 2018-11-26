@@ -51,8 +51,12 @@ class Hand  #returns array with all valued info
         @suit_arr = []
         @cards.each do |v|
             suit_arr << v.suit.to_s
-            value_arr << v.value.to_s
+            value_arr << v.value.to_i
         end
+    end
+
+    def array_increments(array) #checks to see if values are incrementing (example = 1,2,3,4,5)
+        array.sort.each_cons(2).all? {|x,y| y == x + 1}
     end
 
     def matcher(num)
@@ -103,6 +107,8 @@ class Hand  #returns array with all valued info
     end
 
     def straight()
+        prepare_cards()
+        return array_increments(value_arr)
     end
 
     def high_hand(hand)

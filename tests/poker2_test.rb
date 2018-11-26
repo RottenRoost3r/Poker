@@ -160,6 +160,6 @@ class Poker2 < Minitest::Test
         temp_arr << ["7", "Hearts"]
         temp.deal(temp_arr)
         game = Hand.new
-        assert_equal(1, temp.hand.straight())
+        assert_equal(true, temp.hand.straight())
     end
 end
