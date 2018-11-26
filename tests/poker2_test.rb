@@ -134,6 +134,6 @@ class Poker2 < Minitest::Test
         temp_arr << ["8", "Diamonds"]
         temp.deal(temp_arr)
         game = Hand.new
-        assert_equal([23689], temp.hand.high_hand())
+        assert_equal(23689, temp.hand.high_hand(temp_arr))
     end
 end

@@ -46,6 +46,15 @@ class Hand  #returns array with all valued info
         @cards << other_card
     end
 
+    def prepare_cards
+        @value_arr = []
+        @suit_arr = []
+        @cards.each do |v|
+            suit_arr << v.suit.to_s
+            value_arr << v.value.to_s
+        end
+    end
+
     def matcher(num)
         temp_arr = []
         @cards.each do |v|
@@ -78,8 +87,14 @@ class Hand  #returns array with all valued info
         matcher(2) && matcher(3) ? true : false
     end
 
-    def high_hand()
+    def high_hand(hand)
+        prepare_cards()
+        return @value_arr.sort.join.to_i
+
     end
+
+    attr_reader :value_arr
+    attr_reader :suit_arr
 end
 
 class ChickenDinner #finds winner
