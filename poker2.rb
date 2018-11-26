@@ -102,6 +102,9 @@ class Hand  #returns array with all valued info
         suit_arr.uniq.count == 1 ? 1 : 0
     end
 
+    def straight()
+    end
+
     def high_hand(hand)
         prepare_cards()
         return @value_arr.sort.join.to_i
