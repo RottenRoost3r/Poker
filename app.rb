@@ -1,6 +1,6 @@
 require 'sinatra'
-require_relative 'poker.rb'
+require_relative 'poker2.rb'
 
 get '/' do
-erb :poker
+erb :poker2
 end

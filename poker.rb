@@ -484,3 +484,111 @@ end
    attr_reader :black
    attr_reader :white
 end
+
+
+
+class Hand #returns array with all valued info
+    def initialize()
+        @cards = []
+    end
+
+    def <<(other_card)
+        @cards << other_card
+    end
+
+    def prepare_cards()
+        @value_arr = []
+        @suit_arr = []
+        @cards.each do |v|
+            suit_arr << v.suit.to_s
+            value_arr << v.value.to_i
+        end
+    end
+
+    def array_increments(array) #checks to see if values are incrementing (example = 1,2,3,4,5)
+        array.sort.each_cons(2).all? {|x,y| y == x + 1}
+    end
+
+    def matcher(num)
+        temp_arr = []
+        @cards.each do |v|
+            temp_arr << v.value.to_s
+        end
+        temp_arr.each do |v|
+            if temp_arr.count(v) == num
+                return 1
+            end
+        end
+        0
+    end
+
+    def pair()
+        matcher(2)
+    end
+
+    def three_of_a_kind()
+        matcher(3)
+    end
+
+    def four_of_a_kind()
+        matcher(4)
+    end
+
+    def two_pair()
+        prepare_cards()
+        y = []; is = true; wrong = false
+        value_arr.each do |v|
+            value_arr.count(v) == 2 ?  y << v : false
+        end
+        z = value_arr.select { |k| y[0] != k} 
+        z.each do |v|
+            z.count(v) == 2 ? y << is : y << wrong 
+        end
+        return y.include?(true) == true ? 1 : 0
+    end
+
+    def full_house()
+        matcher(2) && matcher(3) ? 1 : 0
+    end
+
+    def flush()
+        prepare_cards()
+        suit_arr.uniq.count == 1 ? 1 : 0
+    end
+
+    def straight()
+        prepare_cards()
+        array_increments(value_arr) == true ? 1 : 0
+    end
+
+    def straight_flush()
+        straight() && flush() == 1 ? 1 : 0
+    end
+
+    def high_hand(hand)
+        prepare_cards()
+        return @value_arr.sort.join.to_i
+    end
+
+    def score()
+        prepare_cards()
+        [straight_flush(), four_of_a_kind(), full_house(), flush(), straight(), three_of_a_kind(), two_pair(), pair(), high_hand(value_arr)].join
+    end
+
+    def play_game()
+        x = Deck.new
+        m = Hand.new
+        @black = x.deal_hand()
+        @white = x.deal_hand()
+        puts white.score()
+        puts black.score()
+    end
+    attr_reader :suit
+    attr_reader :shuffled
+    attr_reader :black
+    attr_reader :white
+    attr_reader :value_arr
+    attr_reader :suit_arr
+end
+m = Hand.new
+m.play_game()
