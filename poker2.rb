@@ -4,13 +4,11 @@ class Card
     SUITS = %i[Hearts Clubs Diamonds Spades]
     
     Card = Struct.new(:value, :suit) do 
-        def to_s #redefine to_s to return card names as string
+        def to_s
             "#{value} of #{suit}"
         end
-       
-        
-
-        def ==(other) #redefine == to check for value instead of id
+    
+        def ==(other)
             self.value == other.value &&
             self.suit == other.suit
         end
@@ -19,14 +17,14 @@ class Card
     attr_accessor :value
 end
 
-class Deck < Card #establishes deck and cards, deals hands
-    def initialize() #creates and shuffles deck
+class Deck < Card 
+    def initialize()
         @hand = []
         @deck = VALUE.flat_map {|val| SUITS.map {|suit| Card.new(val, suit)}}   
         @shuffled = @deck.shuffle
     end
 
-    def deal(card_array) #deals a hand of five random cards
+    def deal(card_array)
         @hand = Hand.new
         card_array.each do |v|
             @hand << Card.new(v[0], v[1])
@@ -40,7 +38,6 @@ class Deck < Card #establishes deck and cards, deals hands
             card_hand << @shuffled.pop()
         end
         return card_hand
-        puts card_hand
     end
     attr_reader :card_hand
     attr_reader :shuffled
@@ -48,7 +45,7 @@ class Deck < Card #establishes deck and cards, deals hands
     attr_reader :hand
 end
 
-class Hand < Deck#returns array with all valued info
+class Hand 
     include Comparable
     def initialize()
         @cards = []
@@ -74,7 +71,7 @@ class Hand < Deck#returns array with all valued info
         value_arr.sort!.reverse
     end
 
-    def array_increments(array) #checks to see if values are incrementing (example = 1,2,3,4,5)
+    def array_increments(array)
         array.sort.each_cons(2).all? {|x,y| y == x + 1}
     end
 
@@ -194,8 +191,6 @@ class Hand < Deck#returns array with all valued info
                 y += 1
             end
         end
-        #p x
-        #p y
         vir = [straight_flush2(), four_of_a_kind2(), full_house2(), flush2(), straight2(), three_of_a_kind2(), two_pair2(), pair2(), straight2()]
         return vir[y]
     end
@@ -217,9 +212,7 @@ class Hand < Deck#returns array with all valued info
     end
 
     def play_game()
-        
         return  black.score() <=> white.score() 
-       #puts "high card winner = #{black.value_arr.sort.reverse <=> white.value_arr.sort.reverse}"
     end
 
     def who_hand(who)
@@ -244,28 +237,16 @@ class Hand < Deck#returns array with all valued info
         x = Deck.new
         @black = x.deal_hand()
         @white = x.deal_hand()
-
-        winners = {1 => "Black wins", -1 => "White wins"}
+        winners = {1 => "Black Wins", -1 => "White Wins"}
         if winners.has_key?(play_game())
             who_hand(play_game())
-            return "#{winners[play_game()]}\n #{type}"
+            return "#{winners[play_game()]}: \n #{type}"
         elsif winners.has_key?(high_compare())
             who_hand(high_compare())
-            return "#{winners[high_compare()]}\n #{type}"
+            return "#{winners[high_compare()]}: \n #{type}"
         else
-            return "it's a tie"
+            return "It's a Tie"
         end
-        
-        
-        black.to_s
-        # puts black.score()
-        puts "================"
-        white.to_s
-        #puts white.score()
-        
-        # puts black.value_arr.sort.reverse <=> white.value_arr.sort.reverse
-        
-        
     end
     attr_reader :type
     attr_reader :cards
@@ -277,7 +258,3 @@ class Hand < Deck#returns array with all valued info
     attr_reader :value_arr
     attr_reader :suit_arr
 end
-m = Hand.new
-m.output()
-
-# , high_hand(value_arr)
