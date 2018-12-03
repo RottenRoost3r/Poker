@@ -28,9 +28,6 @@ class Deck < Card #establishes deck and cards, deals hands
 
     def deal(card_array) #deals a hand of five random cards
         @hand = Hand.new
-        # 5.times do
-        #     hand << @shuffled.pop().to_s
-        # end
         card_array.each do |v|
             @hand << Card.new(v[0], v[1])
         end
@@ -69,12 +66,18 @@ class Hand < Deck#returns array with all valued info
 
     def <=>(other)
         counter = 0
-        self.each do |v|
-            other.each do |x|
-                v[counter] <=> x[counter]
-                counter += 1
-            end
+        5.times do
+            self[counter] <=> other[counter]
+            counter += 1
         end
+
+        # counter = 0
+        # self.each do |v|
+        #     other.each do |x|
+        #         v[counter] <=> x[counter]
+        #         counter += 1
+        #     end
+        # end
     end
 
     def prepare_cards()
@@ -84,6 +87,7 @@ class Hand < Deck#returns array with all valued info
             suit_arr << v.suit.to_s
             value_arr << v.value.to_s.to_i
         end
+        value_arr.sort!.reverse
     end
 
     def array_increments(array) #checks to see if values are incrementing (example = 1,2,3,4,5)
@@ -95,7 +99,7 @@ class Hand < Deck#returns array with all valued info
         @cards.each do |v|
             temp_arr << v.value.to_s
         end
-        temp_arr.each do |v|
+        temp_arr.each_with_index do |v, i|
             if temp_arr.count(v) == num
                 return true
             end
@@ -103,16 +107,46 @@ class Hand < Deck#returns array with all valued info
         false
     end
 
+    def matcher2(num)
+        prepare_cards()
+        new_arr = []
+       value_arr.sort!.reverse!
+        value_arr.each do |v|
+            if value_arr.count(v) == num
+                new_arr << v 
+            end
+        end
+        temp = value_arr - new_arr
+        temp.sort!
+        x = temp.length
+        x.times do |v|
+            new_arr << temp.pop()
+        end
+        return new_arr
+    end
+
     def pair()
         matcher(2) == true ? 1 : 0
+    end
+
+    def pair2()
+        matcher2(2) 
     end
 
     def three_of_a_kind() 
         matcher(3) == true ? 1 : 0
     end
+    
+    def three_of_a_kind2()
+        matcher2(3)
+    end
 
     def four_of_a_kind()
         matcher(4) == true ? 1 : 0
+    end
+
+    def four_of_a_kind2()
+        matcher2(4)
     end
 
     def two_pair()
@@ -128,8 +162,16 @@ class Hand < Deck#returns array with all valued info
         return y.include?(true) == true ? 1 : 0
     end
 
+    def two_pair2()
+        matcher2(2)
+    end
+
     def full_house()
-        matcher(2) == 1 && matcher(3) == 1 ? 1 : 0
+        matcher(2) && matcher(3) ? 1 : 0
+    end
+
+    def full_house2()
+        matcher2(3)
     end
 
     def flush()
@@ -137,49 +179,100 @@ class Hand < Deck#returns array with all valued info
         suit_arr.uniq.count == 1 ? 1 : 0
     end
 
+    def flush2()
+        matcher2(1)
+    end
+
     def straight()
         prepare_cards()
         array_increments(value_arr) == true ? 1 : 0
+    end
+
+    def straight2()
+        matcher2(1)
     end
 
     def straight_flush()
         straight() && flush() == 1 ? 1 : 0
     end
 
-    def high_hand(hand)
-        prepare_cards()
+    def straight_flush2()
+        matcher2(1)
+    end
+
+    def high_hand()
+        x = score()
+        y = 0
+        x.each_char do |v|
+            if v == "1"
+                break
+            else
+                y += 1
+            end
+        end
+        #p x
+        #p y
+        vir = [straight_flush2(), four_of_a_kind2(), full_house2(), flush2(), straight2(), three_of_a_kind2(), two_pair2(), pair2(), straight2()]
+        return vir[y]
+    end
+
+    def high_compare()
+        @black.high_hand().each_with_index do |v, i|
+            if v > @white.high_hand()[i]
+                return 1
+            elsif v < @white.high_hand()[i]
+                return -1
+            end
+        end
+        return 0
     end
 
     def score()
         prepare_cards()
-        [ straight_flush(), four_of_a_kind(), full_house(), flush(), straight(), three_of_a_kind(), two_pair(), pair()].join
+        [straight_flush(), four_of_a_kind(), full_house(), flush(), straight(), three_of_a_kind(), two_pair(), pair()].join
     end
 
     def play_game()
+        
         return  black.score() <=> white.score() 
-    #   puts "high card winner = #{black.value_arr.sort.reverse <=> white.value_arr.sort.reverse}"
+       #puts "high card winner = #{black.value_arr.sort.reverse <=> white.value_arr.sort.reverse}"
     end
 
     def output()
         x = Deck.new
         @black = x.deal_hand()
         @white = x.deal_hand()
+        hand_types = {0 => "High Card", 1 => "Pair", 11 => "Two Pair", 100 => "Three of a Kind", 1000 => "Straight", 10000 => "Flush", 100101 => "Full House", 1000000 => "Four of a Kind", 10000000 => "Straight Flush"}
 
-        thing = {1 => "Black wins", 0 => "Tie Game", -1 => "White wins"}
+        winners = {1 => "Black wins", -1 => "White wins"}
 
+        x = ""
+        hand_types.each do |key, value|
+            if @black.score().to_i == key     
+                x = value
+            end
+        end
+        if winners.has_key?(play_game())
+            puts "#{winners[play_game()]}, #{x}"
+        elsif winners.has_key?(high_compare())
+            puts "#{winners[high_compare()]}, #{x}"
+        else
+            puts "it's a tie"
+        end
+        
+        p black.high_hand()
         black.to_s
-        puts black.score()
+        # puts black.score()
         puts "================"
         white.to_s
-        puts white.score()
-
+        #puts white.score()
         
-        thing.each do |key, value|
-            if play_game() == key 
-                puts value
-            end
-       end
+        # puts black.value_arr.sort.reverse <=> white.value_arr.sort.reverse
+        
+        
     end
+    attr_reader :cards
+    attr_reader :temp_arr
     attr_reader :suit
     attr_reader :shuffled
     attr_reader :black
@@ -189,4 +282,5 @@ class Hand < Deck#returns array with all valued info
 end
 m = Hand.new
 m.output()
+
 # , high_hand(value_arr)
