@@ -6,7 +6,20 @@
 <body>
 <%game = Hand.new%>
 
-<%game.play_game()%>
+<%=game.output()%>
+
+<div class="black_hand" id="black_hand">
+    <%game.black.cards.each do |v|%>
+        <img class="card" width="130" height="180" src="/images/<%=v.value%><%=v.suit%>.jpg">
+    <%end%>
+</div>
+
+
+<div class="white_hand" id="white_hand">
+    <%game.white.cards.each do |v|%>
+        <img class="card" width="130" height="180" src="/images/<%=v.value%><%=v.suit%>.jpg">
+    <%end%>
+</div>
 
 
 </body>

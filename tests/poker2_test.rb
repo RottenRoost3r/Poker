@@ -389,4 +389,6 @@ class Poker2 < Minitest::Test
         
         assert_equal([3, 3, 9, 6, 4], game.high_hand())
     end
+
+  
 end

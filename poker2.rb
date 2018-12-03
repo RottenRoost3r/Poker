@@ -64,22 +64,6 @@ class Hand < Deck#returns array with all valued info
         @cards << other_card
     end
 
-    def <=>(other)
-        counter = 0
-        5.times do
-            self[counter] <=> other[counter]
-            counter += 1
-        end
-
-        # counter = 0
-        # self.each do |v|
-        #     other.each do |x|
-        #         v[counter] <=> x[counter]
-        #         counter += 1
-        #     end
-        # end
-    end
-
     def prepare_cards()
         @value_arr = []
         @suit_arr = []
@@ -238,29 +222,41 @@ class Hand < Deck#returns array with all valued info
        #puts "high card winner = #{black.value_arr.sort.reverse <=> white.value_arr.sort.reverse}"
     end
 
+    def who_hand(who)
+        types = {0 => "High Card", 1 => "Pair", 11 => "Two Pair", 100 => "Three of a Kind", 1000 => "Straight", 10000 => "Flush", 100101 => "Full House", 1000000 => "Four of a Kind", 10000000 => "Straight Flush"}
+        @type = ""
+        winner = ""
+       
+        if who == 1
+            winner = @black
+        elsif who == -1
+            winner = @white
+        end
+        
+        types.each do |key, value|
+            if winner.score().to_i == key
+                @type = value
+            end
+        end
+    end
+
     def output()
         x = Deck.new
         @black = x.deal_hand()
         @white = x.deal_hand()
-        hand_types = {0 => "High Card", 1 => "Pair", 11 => "Two Pair", 100 => "Three of a Kind", 1000 => "Straight", 10000 => "Flush", 100101 => "Full House", 1000000 => "Four of a Kind", 10000000 => "Straight Flush"}
 
         winners = {1 => "Black wins", -1 => "White wins"}
-
-        x = ""
-        hand_types.each do |key, value|
-            if @black.score().to_i == key     
-                x = value
-            end
-        end
         if winners.has_key?(play_game())
-            puts "#{winners[play_game()]}, #{x}"
+            who_hand(play_game())
+            return "#{winners[play_game()]}\n #{type}"
         elsif winners.has_key?(high_compare())
-            puts "#{winners[high_compare()]}, #{x}"
+            who_hand(high_compare())
+            return "#{winners[high_compare()]}\n #{type}"
         else
-            puts "it's a tie"
+            return "it's a tie"
         end
         
-        p black.high_hand()
+        
         black.to_s
         # puts black.score()
         puts "================"
@@ -271,6 +267,7 @@ class Hand < Deck#returns array with all valued info
         
         
     end
+    attr_reader :type
     attr_reader :cards
     attr_reader :temp_arr
     attr_reader :suit
